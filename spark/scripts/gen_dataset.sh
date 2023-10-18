@@ -21,7 +21,7 @@ set -x
 #   Create a cgroup
 setup_cgroup() {
 	# Change user/group IDs to your own
-	sudo cgcreate -a kolokasis:carvsudo -t kolokasis:carvsudo -g memory:memlim
+	# sudo cgcreate -a kolokasis:carvsudo -t kolokasis:carvsudo -g memory:memlim
 	cgset -r memory.limit_in_bytes="$MEM_BUDGET" memlim
 }
 
@@ -50,6 +50,7 @@ start_spark() {
 ##
 stop_spark() {
   run_cgexec "${SPARK_DIR}"/sbin/stop-all.sh >> "${BENCH_LOG}" 2>&1
+  xargs -a /sys/fs/cgroup/memory/memlim/cgroup.procs kill
 }
 
 
@@ -64,8 +65,11 @@ cp ./configs/native/spark-defaults.conf "${SPARK_DIR}"/conf
 start_spark
 
 # Run benchmark and save output to tmp_out.txt
-run_cgexec "${SPARK_BENCH_DIR}"/"${BENCHMARKS}"/bin/gen_data.sh >> "${BENCH_LOG}" 2>&1
+for benchmark in "${BENCHMARKS[@]}"
+do
+  run_cgexec "${SPARK_BENCH_DIR}"/"${benchmark}"/bin/gen_data.sh >> "${BENCH_LOG}" 2>&1
+done
 
 stop_spark
 
-delete_cgroup
+# delete_cgroup

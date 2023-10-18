@@ -2,10 +2,10 @@
 # Global settings - Configurations
 
 # Spark Master
-master="sith4-fast"
+master="sith1-fast"
 
 # A list of machines where the spark cluster is running
-MC_LIST="sith4-fast"
+MC_LIST="sith1-fast"
 
 # Use these inputs for fileio
 DATA_HDFS=file:///mnt/datasets/SparkBench

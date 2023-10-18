@@ -11,8 +11,8 @@ Setup the following variables in the conf.sh file.
 | SPARK_VERSION           | It can be "2.3.0" or "3.3.0"                                         |
 | NUMBER_OF_PARTITIONS    | Set the number of partitions                                         |
 | BENCH_DIR               | Set the path of tera_applications directory                          | 
-| SPARK_MASTER            | Set the host of spark master e.g., sith4-fast                        |
-| SPARK_SLAVE             | Set the host of spark slave e.g., sith4-fast                         |
+| SPARK_MASTER            | Set the host of spark master e.g., sith1-fast                        |
+| SPARK_SLAVE             | Set the host of spark slave e.g., sith1-fast                         |
 | GC_THREADS              | Set the number of GC threads                                         |
 | DEV_SHFL                | Set the device for shuffle (e.g., nvme0n1)                           |
 | MNT_SHFL                | Set the mount point for shuffle directory                            |

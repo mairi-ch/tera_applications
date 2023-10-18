@@ -2,7 +2,7 @@ export JAVA_HOME="/opt/carvguest/asplos23_ae/teraheap/jdk8u345/build/linux-x86_6
 TERA_APPS_REPO="/opt/carvguest/asplos23_ae/tera_applications"
 COMPILE_OUT="${TERA_APPS_REPO}/giraph/compile.out"
 
-HADOOP_SLAVE="sith4-fast"
+HADOOP_SLAVE="sith1-fast"
 HDFS_DIR="/mnt/datasets/hadoop"
 TERAHEAP_DIR="/opt/carvguest/asplos23_ae/teraheap"
 ZK_SNAPSHOT_DIR="/mnt/fmap"

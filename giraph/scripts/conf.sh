@@ -1,4 +1,4 @@
-HOSTNAME=sith4-fast
+HOSTNAME=sith1-fast
 JAVA_PATH=/spare/kolokasis/dev/teraheap/jdk8u345/build/linux-x86_64-normal-server-release/jdk
 #JAVA_PATH=/opt/carvguest/asplos23_ae/teraheap/jdk8u345/build/linux-x86_64-normal-server-release/jdk
 #JAVA_PATH="/opt/carvguest/asplos23_ae/jdk8u/build/linux-x86_64-normal-server-release/jdk"

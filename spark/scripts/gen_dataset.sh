@@ -64,7 +64,7 @@ cp ./configs/native/spark-defaults.conf "${SPARK_DIR}"/conf
 
 start_spark
 
-# Run benchmark and save output to tmp_out.txt
+## Run benchmark and save output to tmp_out.txt
 for benchmark in "${BENCHMARKS[@]}"
 do
   run_cgexec "${SPARK_BENCH_DIR}"/"${benchmark}"/bin/gen_data.sh >> "${BENCH_LOG}" 2>&1

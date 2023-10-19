@@ -13,7 +13,7 @@
 #
 ###################################################
 # Dataset size "small" and "large"
-DATA_SIZE=small
+DATA_SIZE=large
 # JAVA Home
 MY_JAVA_HOME="/home1/public/mariach/TeraHeap/teraheap/jdk17/build/base-linux/jdk"
 # MY_JAVA_HOME="/home1/public/mariach/TeraHeap/tmp/jdk17/build/linux-x86_64-server-slowdebug/jdk"
@@ -32,19 +32,22 @@ MASTER_LOG_DIR=${SPARK_DIR}/logs
 # Spark master log dir
 MASTER_METRIC_FILE="${SPARK_DIR}/conf/metrics.properties"
 # Spark master node
-SPARK_MASTER=sith1-fast
+SPARK_MASTER=sith3-fast
 # Spark slave host name
-SPARK_SLAVE=sith1-fast
+SPARK_SLAVE=sith3-fast
 # Number of garbage collection threads
 GC_THREADS=8
+
 # Device for shuffle
-DEV_SHFL=sdb1
+DEV_SHFL=nvme0n1
 # Mount point for shuffle directory
-MNT_SHFL=/spare/mariach/shuffle
+MNT_SHFL=/tmp/nvme/mariach/shuffle
+
 # Device for H2
 DEV_H2=nvme0n1
 # Mount point for H2 TeraHeap directory
-MNT_H2=/mnt/fmap
+MNT_H2=/tmp/nvme/mariach
+
 # Card segment size for H2
 CARD_SIZE=$((8 * 1024))
 # Region size for H2
@@ -70,8 +73,9 @@ S_LEVEL=( "MEMORY_ONLY" ) #MEMORY_AND_DISK
 # TeraCache configuration size in Spark: 'spark.teracache.heap.size'
 H1_H2_SIZE=( 1200 ) #dont
 # Running benchmarks
-BENCHMARKS=( "LinearRegression" )
-#"ConnectedComponent" "LinearRegression" "LogisticRegression" "PageRank" "ShortestPaths" "SVDPlusPlus" "SVM" "TriangleCount"
+BENCHMARKS=( "PageRank" )
+#"ConnectedComponent" "LinearRegression" "LogisticRegression" "PageRank" "ShortestPaths"
+#"SQL" "SVDPlusPlus" "SVM" "TriangleCount"
 # Number of executors
 NUM_EXECUTORS=( 1 )
 # Total Configurations

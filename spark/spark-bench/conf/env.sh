@@ -2,20 +2,20 @@
 # Global settings - Configurations
 
 # Spark Master
-master="sith1-fast"
+master="sith3-fast"
 
 # A list of machines where the spark cluster is running
-MC_LIST="sith1-fast"
+MC_LIST="sith3-fast"
 
 # Use these inputs for fileio
-DATA_HDFS=file:///mnt/datasets/SparkBench
+DATA_HDFS=file:///spare/mariach/datasets/SparkBench
 
 # Local dataset optional
 DATASET_DIR="${DATA_HDFS}/dataset"
 
 # Use this when run on Spark 2.3.0-kolokasis
 SPARK_VERSION=2.3.0
-[ -z "$SPARK_HOME" ] &&  export SPARK_HOME=/opt/kolokasis/tera_applications/spark/spark-3.3.0
+[ -z "$SPARK_HOME" ] &&  export SPARK_HOME=/home1/public/mariach/TeraHeap/tera_applications/spark/spark-3.3.0
 
 SPARK_MASTER=spark://${master}:7077
 
@@ -26,9 +26,9 @@ SPARK_RDD_COMPRESS=false
 #SPARK_IO_COMPRESSION_CODEC=lzf
 
 # Spark options in system.property or arguments of spark-submit 
-SPARK_EXECUTOR_MEMORY=1200g
+SPARK_EXECUTOR_MEMORY=38g
 SPARK_EXECUTOR_INSTANCES=1
-SPARK_EXECUTOR_CORES=16
+SPARK_EXECUTOR_CORES=8
 
 # Storage levels, see :
 STORAGE_LEVEL=MEMORY_ONLY

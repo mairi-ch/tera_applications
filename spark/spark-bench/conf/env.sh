@@ -8,7 +8,7 @@ master="sith3-fast"
 MC_LIST="sith3-fast"
 
 # Use these inputs for fileio
-DATA_HDFS=file:///spare/mariach/datasets/SparkBench
+DATA_HDFS="file:///spare/mariach/datasets/SparkBench/small"
 
 # Local dataset optional
 DATASET_DIR="${DATA_HDFS}/dataset"
@@ -26,7 +26,7 @@ SPARK_RDD_COMPRESS=false
 #SPARK_IO_COMPRESSION_CODEC=lzf
 
 # Spark options in system.property or arguments of spark-submit 
-SPARK_EXECUTOR_MEMORY=38g
+SPARK_EXECUTOR_MEMORY=1200g
 SPARK_EXECUTOR_INSTANCES=1
 SPARK_EXECUTOR_CORES=8
 

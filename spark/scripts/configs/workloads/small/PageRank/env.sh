@@ -1,5 +1,9 @@
 # for preparation 
-numV=1000000  # 2GB
+# numV=1000000  # 2GB
+# numV=4000000  # 8GB
+# numV=2000000  # 4GB
+numV=1500000  # 3GB
+
 NUM_OF_PARTITIONS=256
 mu=4.0
 sigma=1.3

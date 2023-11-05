@@ -64,15 +64,15 @@ do
 done
 
 # Caclulate the overheads in TeraHeap card table traversal, marking and adjust phases
-if [ $TH ]
-then
-  TC_CT_TRAVERSAL=$(grep "TC_CT" "${RESULT_DIR}"/teraHeap.txt     | awk '{print $5}' | awk '{ sum += $1 } END {print sum }')
-  HEAP_CT_TRAVERSAL=$(grep "HEAP_CT" "${RESULT_DIR}"/teraHeap.txt | awk '{print $5}' | awk '{ sum += $1 } END {print sum }')
-  PHASE1=$(grep "PHASE1" "${RESULT_DIR}"/teraHeap.txt             | awk '{print $5}' | awk '{ sum += $1 } END {print sum }')
-  PHASE2=$(grep "PHASE2" "${RESULT_DIR}"/teraHeap.txt             | awk '{print $5}' | awk '{ sum += $1 } END {print sum }')
-  PHASE3=$(grep "PHASE3" "${RESULT_DIR}"/teraHeap.txt             | awk '{print $5}' | awk '{ sum += $1 } END {print sum }')
-  PHASE4=$(grep "PHASE4" "${RESULT_DIR}"/teraHeap.txt             | awk '{print $5}' | awk '{ sum += $1 } END {print sum }')
-fi
+# if [ $TH ]
+# then
+#   TC_CT_TRAVERSAL=$(grep "TC_CT" "${RESULT_DIR}"/teraHeap.txt     | awk '{print $5}' | awk '{ sum += $1 } END {print sum }')
+#   HEAP_CT_TRAVERSAL=$(grep "HEAP_CT" "${RESULT_DIR}"/teraHeap.txt | awk '{print $5}' | awk '{ sum += $1 } END {print sum }')
+#   PHASE1=$(grep "PHASE1" "${RESULT_DIR}"/teraHeap.txt             | awk '{print $5}' | awk '{ sum += $1 } END {print sum }')
+#   PHASE2=$(grep "PHASE2" "${RESULT_DIR}"/teraHeap.txt             | awk '{print $5}' | awk '{ sum += $1 } END {print sum }')
+#   PHASE3=$(grep "PHASE3" "${RESULT_DIR}"/teraHeap.txt             | awk '{print $5}' | awk '{ sum += $1 } END {print sum }')
+#   PHASE4=$(grep "PHASE4" "${RESULT_DIR}"/teraHeap.txt             | awk '{print $5}' | awk '{ sum += $1 } END {print sum }')
+# fi
 
 # Caclulate the serialziation/deserialization overhead
 
@@ -126,16 +126,16 @@ done
   echo "APP_THREAD_SAMPLES,${APP_THREAD_SAMPLES}"
 } >> "${RESULT_DIR}"/serdes.csv
 
-if [ $TH ]
-then
-  {
-    grep "TOTAL_TRANS_OBJ" "${RESULT_DIR}"/teraHeap.txt | awk '{print $3","$5}'
-    grep "TOTAL_FORWARD_PTRS" "${RESULT_DIR}"/teraHeap.txt | awk '{print $3","$5}'
-    grep "TOTAL_BACK_PTRS" "${RESULT_DIR}"/teraHeap.txt | awk '{print $3","$5}'
-    grep "DUMMY" "${RESULT_DIR}"/teraHeap.txt | awk '{sum+=$6} END {print "DUMMY_OBJ_SIZE(GB),"sum*8/1024/1024}'
-    grep "DISTRIBUTION" "${RESULT_DIR}"/teraHeap.txt |tail -n 1 |awk '{print $5 " " $6 " " $7 " " $8 " " $9 " " $10 " " $11 " " $12" " $13 " " $14 " " $15}'
-  } >> "${RESULT_DIR}"/statistics.csv
-fi
+# if [ $TH ]
+# then
+#   {
+#     grep "TOTAL_TRANS_OBJ" "${RESULT_DIR}"/teraHeap.txt | awk '{print $3","$5}'
+#     grep "TOTAL_FORWARD_PTRS" "${RESULT_DIR}"/teraHeap.txt | awk '{print $3","$5}'
+#     grep "TOTAL_BACK_PTRS" "${RESULT_DIR}"/teraHeap.txt | awk '{print $3","$5}'
+#     grep "DUMMY" "${RESULT_DIR}"/teraHeap.txt | awk '{sum+=$6} END {print "DUMMY_OBJ_SIZE(GB),"sum*8/1024/1024}'
+#     grep "DISTRIBUTION" "${RESULT_DIR}"/teraHeap.txt |tail -n 1 |awk '{print $5 " " $6 " " $7 " " $8 " " $9 " " $10 " " $11 " " $12" " $13 " " $14 " " $15}'
+#   } >> "${RESULT_DIR}"/statistics.csv
+# fi
 
 # Read the Utilization from system.csv file
 USR_UTIL_PER=$(grep "USR_UTIL" "${RESULT_DIR}"/system.csv |awk -F ',' '{print $2}')

@@ -61,7 +61,7 @@ build_async_profiler() {
 #   Create a cgroup
 setup_cgroup() {
 	# Change user/group IDs to your own
-	# sudo cgcreate -a kolokasis:carvsudo -t kolokasis:carvsudo -g memory:memlim
+	sudo cgcreate -a mariach:carvsudo -t mariach:carvsudo -g memory:memlim
 	cgset -r memory.limit_in_bytes="$MEM_BUDGET" memlim
   #sudo cgset -r memory.numa_stat=0 memlim
 }
@@ -92,7 +92,6 @@ start_spark() {
 ##
 stop_spark() {
   run_cgexec "${SPARK_DIR}"/sbin/stop-all.sh >> "${BENCH_LOG}" 2>&1
-  xargs -a /sys/fs/cgroup/memory/memlim/cgroup.procs kill
   #"${SPARK_DIR}"/sbin/stop-all.sh >> "${BENCH_LOG}" 2>&1
 }
 
@@ -288,7 +287,7 @@ OUT="${OUTPUT_PATH}_${TIME}"
 mkdir -p "${OUT}"
 
 # Enable perf event
-# sudo sh -c 'echo -1 >/proc/sys/kernel/perf_event_paranoid'
+sudo sh -c 'echo -1 >/proc/sys/kernel/perf_event_paranoid'
 
 gen_config_files
 
@@ -355,7 +354,7 @@ do
       fi
 
       # Drop caches
-      # sudo sync && echo 3 | sudo tee /proc/sys/vm/drop_caches >> "${BENCH_LOG}" 2>&1
+      sudo sync && echo 3 | sudo tee /proc/sys/vm/drop_caches >> "${BENCH_LOG}" 2>&1
 
       # Pmem stats before
       if [[ ${DEV_FMAP} == *pmem* ]]
@@ -394,7 +393,7 @@ do
       
       stop_spark
 
-      # delete_cgroup
+      delete_cgroup
 
       if [ $SERDES ]
       then
@@ -425,7 +424,7 @@ do
       if [ $TH ]
       then
         TH_METRICS=$(ls -td "${SPARK_DIR}"/work/* | head -n 1)
-        # cp "${TH_METRICS}"/0/teraHeap.txt "${RUN_DIR}"/
+        cp "${TH_METRICS}"/0/teraHeap.txt "${RUN_DIR}"/
         ./parse_results.sh -d "${RUN_DIR}" -n "${NUM_EXECUTORS}" -t
       else
         ./parse_results.sh -d "${RUN_DIR}" -n "${NUM_EXECUTORS}" -s

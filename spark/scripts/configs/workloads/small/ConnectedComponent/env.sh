@@ -1,5 +1,6 @@
 # application parameters
-numV=942240
+# numV=942240 # 1.8 GB
+numV=1050000 # 2 GB
 
 NUM_OF_PARTITIONS=256
 mu=4.0

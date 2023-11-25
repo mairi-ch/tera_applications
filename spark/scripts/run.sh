@@ -92,7 +92,8 @@ start_spark() {
 ##
 stop_spark() {
   run_cgexec "${SPARK_DIR}"/sbin/stop-all.sh >> "${BENCH_LOG}" 2>&1
-  #"${SPARK_DIR}"/sbin/stop-all.sh >> "${BENCH_LOG}" 2>&1
+  xargs -a /sys/fs/cgroup/memory/memlim/cgroup.procs kill
+  # "${SPARK_DIR}"/sbin/stop-all.sh >> "${BENCH_LOG}" 2>&1
 }
 
 ##
@@ -280,6 +281,8 @@ do
   esac
 done
 
+fallocate -l 700G /tmp/nvme/mariach/H2.txt
+
 # Create directory for the results if do not exist
 TIME=$(date +"%T-%d-%m-%Y")
 
@@ -435,5 +438,7 @@ do
   ENDTIME=$(date +%s)
   printEndMsg "${STARTTIME}" "${ENDTIME}"
 done
+
+rm -f /tmp/nvme/mariach/H2.txt
 
 exit

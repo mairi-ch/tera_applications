@@ -54,25 +54,31 @@ done
 
 TOTAL_TIME=$(tail -n 1 ${RESULT_DIR}/total_time.txt | awk '{split($0,a,","); print a[3]}')
 
-MINOR_GC=()
-MAJOR_GC=()
+# MINOR_GC=()
+EVAC_TIME=() #YGCT
+FULLGC_TIME=() #FGCT
+CM_TIME=() #FGCT
+STW_TIME=() #GCT
 
 for ((i=0; i<NUM_EXECUTORS; i++))
 do
-  MINOR_GC+=($(tail -n 1 "${RESULT_DIR}"/jstat_${i}.txt | awk '{print $8}'))
-  MAJOR_GC+=($(tail -n 1 "${RESULT_DIR}"/jstat_${i}.txt | awk '{print $10}'))
+  # MINOR_GC+=($(tail -n 1 "${RESULT_DIR}"/jstat_${i}.txt | awk '{print $8}'))
+  EVAC_TIME+=($(tail -n 1 "${RESULT_DIR}"/jstat_${i}.txt | awk '{print $8}'))
+  FULLGC_TIME+=($(tail -n 1 "${RESULT_DIR}"/jstat_${i}.txt | awk '{print $10}'))
+  CM_TIME+=($(tail -n 1 "${RESULT_DIR}"/jstat_${i}.txt | awk '{print $12}'))
+  STW_TIME+=($(tail -n 1 "${RESULT_DIR}"/jstat_${i}.txt | awk '{print $13}'))
 done
 
 # Caclulate the overheads in TeraHeap card table traversal, marking and adjust phases
-# if [ $TH ]
-# then
-#   TC_CT_TRAVERSAL=$(grep "TC_CT" "${RESULT_DIR}"/teraHeap.txt     | awk '{print $5}' | awk '{ sum += $1 } END {print sum }')
-#   HEAP_CT_TRAVERSAL=$(grep "HEAP_CT" "${RESULT_DIR}"/teraHeap.txt | awk '{print $5}' | awk '{ sum += $1 } END {print sum }')
-#   PHASE1=$(grep "PHASE1" "${RESULT_DIR}"/teraHeap.txt             | awk '{print $5}' | awk '{ sum += $1 } END {print sum }')
-#   PHASE2=$(grep "PHASE2" "${RESULT_DIR}"/teraHeap.txt             | awk '{print $5}' | awk '{ sum += $1 } END {print sum }')
-#   PHASE3=$(grep "PHASE3" "${RESULT_DIR}"/teraHeap.txt             | awk '{print $5}' | awk '{ sum += $1 } END {print sum }')
-#   PHASE4=$(grep "PHASE4" "${RESULT_DIR}"/teraHeap.txt             | awk '{print $5}' | awk '{ sum += $1 } END {print sum }')
-# fi
+if [ $TH ]
+then
+  # TC_CT_TRAVERSAL=$(grep "TC_CT" "${RESULT_DIR}"/teraHeap.txt     | awk '{print $5}' | awk '{ sum += $1 } END {print sum }')
+  # HEAP_CT_TRAVERSAL=$(grep "HEAP_CT" "${RESULT_DIR}"/teraHeap.txt | awk '{print $5}' | awk '{ sum += $1 } END {print sum }')
+  YOUNG_TIME=$(grep "YOUNG" "${RESULT_DIR}"/teraHeap.txt  | grep "EVAC" | awk '{print $4}' | awk '{ sum += $1 } END {print sum }')
+  MIX_TIME=$(grep "MIXED" "${RESULT_DIR}"/teraHeap.txt  | grep "EVAC" | awk '{print $4}' | awk '{ sum += $1 } END {print sum }')
+  TIME_SCAN_H2=$(grep "TIME_SCAN_H2_CT" "${RESULT_DIR}"/teraHeap.txt  | awk '{print $4}' | awk '{ sum += $1 } END {print sum }')
+  BYTES_IN_H2=$(tail -n 5 "${RESULT_DIR}"/teraHeap.txt  | grep "TOTAL_OBJECTS_SIZE" | awk '{print $5}')
+fi
 
 # Caclulate the serialziation/deserialization overhead
 
@@ -93,27 +99,34 @@ do
     | sed 's/(//g' \
     | head -n 1)
 
-  NET_TIME=$(echo "${TOTAL_TIME} - ${MINOR_GC[$i]} - ${MAJOR_GC[$i]}" | bc -l)
+  NET_TIME=$(echo "${TOTAL_TIME} - ${STW_TIME[$i]}" | bc -l)
   SD_SAMPLES=$(echo "${SER_SAMPLES} + ${DESER_SAMPLES}" | bc -l)
   SERDES+=($(echo "${SD_SAMPLES} * ${NET_TIME} / ${APP_THREAD_SAMPLES}" | bc -l))
 done
 
 {
-  echo "COMPONENT,TIME(s)"               
+  # echo "COMPONENT,TIME(s)"               
   echo "TOTAL_TIME,${TOTAL_TIME}"
 
   for ((i=0; i<NUM_EXECUTORS; i++))
   do
-    echo "MINOR_GC,${MINOR_GC[$i]}"
-    echo "MAJOR_GC,${MAJOR_GC[$i]}"
+    # echo "MINOR_GC,${MINOR_GC[$i]}"
+    echo "EVAC_TIME,${EVAC_TIME[$i]}"
+    echo "FULLGC_TIME,${FULLGC_TIME[$i]}"
+    echo "CM_TIME,${CM_TIME[$i]}"
+    echo "STW_TIME,${STW_TIME[$i]}"
   done
 
-  echo "TC_MINOR_GC,${TC_CT_TRAVERSAL}"
-  echo "HEAP_MINOR_GC,${HEAP_CT_TRAVERSAL}"
-  echo "PHASE1_FGC,${PHASE1}"
-  echo "PHASE2_FGC,${PHASE2}"
-  echo "PHASE3_FGC,${PHASE3}"
-  echo "PHASE4_FGC,${PHASE4}"
+  # jacks statistics in teraheap.txt
+  # echo "TC_MINOR_GC,${TC_CT_TRAVERSAL}"
+  # echo "HEAP_MINOR_GC,${HEAP_CT_TRAVERSAL}"
+  echo "YOUNG_TIME_EVAC,${YOUNG_TIME}"
+  echo "MIX_TIME_EVAC,${MIX_TIME}"
+  echo "TIME_TO_SCAN_H2,${TIME_SCAN_H2}"
+  echo "BYTES_MOVED_IN_H2,${BYTES_IN_H2}"
+  
+
+
   for ((i=0; i<NUM_EXECUTORS; i++))
   do
     echo "SERSES,${SERDES[$i]}"

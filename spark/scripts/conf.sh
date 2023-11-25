@@ -15,23 +15,23 @@
 
 # SMALL DS
 DATA_SIZE=small
-DATA_HDFS="file:///spare/mariach/datasets/SparkBench/small"
-H1_SIZE=(34)
-
-# LARGE DS
-# DATA_SIZE=large # Dataset size "small" and "large"
-# DATA_HDFS="file:////tmp/nvme/mariach/large" # Directory that contains datasets
-# H1_SIZE=(64) # Heap size for executors '-Xms' is in GB e.g., 54 -> 54GB
+DATA_HDFS="file:///spare/mariach/datasets/SparkBench"
 
 
+
+S_LEVEL=( "MEMORY_AND_DISK" )  # MEMORY_AND_DISK, MEMORY_ONLY
+# cgset accepts K,M,G and eiB, MiB, GiB units for memory limit
+MEM_BUDGET=8G # dram size = h1 size + page cache for h2
+H1_SIZE=(7) # vanilla h1 = 90% of dram 
+
+# big dram (whatev -changed later)
+# h1 size for tera = just enough in odrer not to trigger full gc
+# dram = h1 size (for tera) + 4gb page cache
+# h1 size for vanilla = 90% of dram  (vanilla doesnt use dram)
 
 
 # JAVA Home
-# MY_JAVA_HOME="/home1/public/mariach/TeraHeap/teraheap/jdk17/build/asan-fast/jdk"
 MY_JAVA_HOME="/home1/public/mariach/TeraHeap/teraheap/jdk17/build/base-linux/jdk"
-# MY_JAVA_HOME="/home1/public/mariach/TeraHeap/teraheap/jdk17/build/lala/jdk"
-# MY_JAVA_HOME="/home1/public/mariach/TeraHeap/jack/teraheap/jdk17u067/build/linux-x86_64-server-release/jdk"
-#linux-x86_64-server-slowdebug
 
 # Spark Version
 SPARK_VERSION=3.3.0
@@ -46,9 +46,9 @@ MASTER_LOG_DIR=${SPARK_DIR}/logs
 # Spark master log dir
 MASTER_METRIC_FILE="${SPARK_DIR}/conf/metrics.properties"
 # Spark master node
-SPARK_MASTER=sith3-fast
+SPARK_MASTER=sith1-fast
 # Spark slave host name
-SPARK_SLAVE=sith3-fast
+SPARK_SLAVE=sith1-fast
 
 
 # Device for shuffle
@@ -82,15 +82,13 @@ SPARK_BENCH_DIR=${BENCH_DIR}/spark/spark-bench
 BENCH_LOG=${BENCH_DIR}/spark/scripts/log.out
 
 
-# cgset accepts K,M,G and eiB, MiB, GiB units for memory limit
-MEM_BUDGET=80G #dram size = h1 size + page cache for h2
+
 # TeraCache configuration size in Spark: 'spark.teracache.heap.size'
 H1_H2_SIZE=( 1200 ) #dont
 
 # Spark memory fraction: 'spark.memory.storagefraction'
 MEM_FRACTION=( 0.5 ) 
-# Storage Level
-S_LEVEL=( "MEMORY_ONLY" ) #MEMORY_AND_DISK
+
 # Running benchmarks
 BENCHMARKS=("PageRank")
 # "LogisticRegression" "ShortestPaths" "SQL" "SVDPlusPlus" "SVM" "TriangleCount" )

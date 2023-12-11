@@ -14,7 +14,7 @@
 
 # set -x
 
-. ./conf.sh
+. ./conf-vanilla.sh
 
 
 #### Global Variables ####
@@ -410,7 +410,7 @@ do
       fi
 
       # Copy the confifuration to the directory with the results
-      cp ./conf.sh "${RUN_DIR}"/
+      cp ./conf-vanilla.sh "${RUN_DIR}"/
 
       if [ $CUSTOM_BENCHMARK == "false" ]
       then

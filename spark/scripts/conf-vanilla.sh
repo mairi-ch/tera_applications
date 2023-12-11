@@ -18,17 +18,11 @@ DATA_SIZE=small
 DATA_HDFS="file:///spare/mariach/datasets/SparkBench"
 
 
-
-
-S_LEVEL=( "MEMORY_ONLY" )  # MEMORY_AND_DISK, MEMORY_ONLY
+S_LEVEL=( "MEMORY_AND_DISK" )  # MEMORY_AND_DISK, MEMORY_ONLY
 # cgset accepts K,M,G and eiB, MiB, GiB units for memory limit
 MEM_BUDGET=8G # dram size = h1 size + page cache for h2
-H1_SIZE=(4) # vanilla h1 = 90% of dram 
+H1_SIZE=(7) # vanilla h1 = 90% of dram 
 
-# big dram (whatev -changed later)
-# h1 size for tera = just enough in odrer not to trigger full gc
-# dram = h1 size (for tera) + 4gb page cache
-# h1 size for vanilla = 90% of dram  (vanilla doesnt use dram)
 
 # JAVA Home
 MY_JAVA_HOME="/home1/public/mariach/TeraHeap/teraheap/jdk17/build/base-linux/jdk"

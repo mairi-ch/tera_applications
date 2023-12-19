@@ -20,10 +20,14 @@ DATA_HDFS="file:///spare/mariach/datasets/SparkBench"
 
 
 
-S_LEVEL=( "MEMORY_ONLY" )  # MEMORY_AND_DISK, MEMORY_ONLY
-# cgset accepts K,M,G and eiB, MiB, GiB units for memory limit
-MEM_BUDGET=8G # dram size = h1 size + page cache for h2
-H1_SIZE=(4) # vanilla h1 = 90% of dram 
+# S_LEVEL=( "MEMORY_ONLY" )  # MEMORY_AND_DISK, MEMORY_ONLY
+# # cgset accepts K,M,G and eiB, MiB, GiB units for memory limit
+# MEM_BUDGET=8G # dram size = h1 size + page cache for h2
+# H1_SIZE=(4) # vanilla h1 = 90% of dram 
+
+S_LEVEL=( "MEMORY_AND_DISK" ) 
+MEM_BUDGET=8G
+H1_SIZE=(7)
 
 # big dram (whatev -changed later)
 # h1 size for tera = just enough in odrer not to trigger full gc
@@ -46,9 +50,9 @@ MASTER_LOG_DIR=${SPARK_DIR}/logs
 # Spark master log dir
 MASTER_METRIC_FILE="${SPARK_DIR}/conf/metrics.properties"
 # Spark master node
-SPARK_MASTER=sith0-fast
+SPARK_MASTER=sith3-fast
 # Spark slave host name
-SPARK_SLAVE=sith0-fast
+SPARK_SLAVE=sith3-fast
 
 
 # Device for shuffle

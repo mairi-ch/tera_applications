@@ -1,0 +1,1093 @@
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.ibm:Common:jar:1.0
+[WARNING] 'build.plugins.plugin.version' for org.scala-tools:maven-scala-plugin is missing. @ line 82, column 21
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.ibm:TerasortApp:jar:1.0
+[WARNING] 'build.plugins.plugin.version' for org.scala-tools:maven-scala-plugin is missing. @ line 104, column 21
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.ibm:SVMApp:jar:1.0
+[WARNING] 'build.plugins.plugin.version' for org.scala-tools:maven-scala-plugin is missing. @ line 70, column 21
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.ibm:DecisionTreeApp:jar:1.0
+[WARNING] 'build.plugins.plugin.version' for org.scala-tools:maven-scala-plugin is missing. @ line 66, column 21
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.ibm:MFApp:jar:1.0
+[WARNING] 'build.plugins.plugin.version' for org.scala-tools:maven-scala-plugin is missing. @ line 75, column 21
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.ibm:PageRankApp:jar:1.0
+[WARNING] 'build.plugins.plugin.version' for org.scala-tools:maven-scala-plugin is missing. @ line 70, column 21
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.ibm:ConnectedComponentApp:jar:1.0
+[WARNING] 'build.plugins.plugin.version' for org.scala-tools:maven-scala-plugin is missing. @ line 70, column 21
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] SparkBench                                                         [pom]
+[INFO] Common                                                             [jar]
+[INFO] TerasortApp                                                        [jar]
+[INFO] PCAApp                                                             [jar]
+[INFO] LogisticRegressionApp                                              [jar]
+[INFO] KMeansApp                                                          [jar]
+[INFO] LinearRegressionApp                                                [jar]
+[INFO] SVMApp                                                             [jar]
+[INFO] DecisionTreeApp                                                    [jar]
+[INFO] MFApp                                                              [jar]
+[INFO] PageRankApp                                                        [jar]
+[INFO] TriangleCountApp                                                   [jar]
+[INFO] StronglyConnectedComponentApp                                      [jar]
+[INFO] ShortestPathsApp                                                   [jar]
+[INFO] SVDPlusPlusApp                                                     [jar]
+[INFO] LabelPropagationApp                                                [jar]
+[INFO] ConnectedComponentApp                                              [jar]
+[INFO] PregelOperationApp                                                 [jar]
+[INFO] SQLApp                                                             [jar]
+[INFO] StreamingApp                                                       [jar]
+[INFO] 
+[INFO] -------------------< com.ibm.sparkbench:sparkbench >--------------------
+[INFO] Building SparkBench 2.0                                           [1/20]
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ sparkbench ---
+[INFO] Deleting /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/target
+[INFO] 
+[INFO] --- scala-maven-plugin:3.2.2:compile (scala-compile) @ sparkbench ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- scala-maven-plugin:3.2.2:testCompile (scala-test-compile) @ sparkbench ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-jar-plugin:2.6:jar (default-jar) @ sparkbench ---
+[WARNING] JAR will be empty - no content was marked for inclusion!
+[INFO] Building jar: /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/target/sparkbench-2.0.jar
+[INFO] 
+[INFO] ---------------------------< com.ibm:Common >---------------------------
+[INFO] Building Common 1.0                                               [2/20]
+[INFO] --------------------------------[ jar ]---------------------------------
+Downloading from scala-tools.org: https://oss.sonatype.org/service/local/repositories/central-sync/content/org/scala-tools/org/scala-tools/maven-scala-plugin/maven-metadata.xml
+Downloading from scala-tools.org: https://oss.sonatype.org/service/local/repositories/central-sync/content/org/scala-tools/edu/jhu/nlp/wikixmlj/1.0-SNAPSHOT/maven-metadata.xml
+Downloading from apache-repo: https://repository.apache.org/content/repositories/releases/org/apache/ant/ant/maven-metadata.xml
+Downloading from central: https://repo1.maven.org/maven2/org/apache/ant/ant/maven-metadata.xml
+Downloading from scala-tools.org: https://oss.sonatype.org/service/local/repositories/central-sync/content/org/scala-tools/org/apache/ant/ant/maven-metadata.xml
+Progress (1): 1.5 kBProgress (2): 1.5 kB | 1.4/1.5 kBProgress (2): 1.5 kB | 1.5 kB                                 Downloaded from central: https://repo1.maven.org/maven2/org/apache/ant/ant/maven-metadata.xml (1.5 kB at 1.0 kB/s)
+Downloaded from apache-repo: https://repository.apache.org/content/repositories/releases/org/apache/ant/ant/maven-metadata.xml (1.5 kB at 990 B/s)
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ Common ---
+[INFO] Deleting /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/common/target
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ Common ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/common/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.3:compile (default-compile) @ Common ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 3 source files to /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/common/target/classes
+[INFO] 
+[INFO] --- scala-maven-plugin:3.2.2:compile (scala-compile) @ Common ---
+[INFO] artifact org.apache.ant:ant: checking for updates from central
+[INFO] artifact org.apache.ant:ant: checking for updates from apache-repo
+[INFO] artifact org.apache.ant:ant: checking for updates from scala-tools.org
+[WARNING]  Expected all dependencies to require Scala version: 2.12.15
+[WARNING]  com.twitter:chill_2.12:0.10.0 requires scala version: 2.12.14
+[WARNING] Multiple versions of scala libraries detected!
+[INFO] /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/common/DataGen/src/main:-1: info: compiling
+[INFO] /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/common/target/generated-sources/annotations:-1: info: compiling
+[INFO] Compiling 4 source files to /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/common/target/classes at 1702241353232
+[INFO] prepare-compile in 0 s
+[INFO] compile in 6 s
+[INFO] 
+[INFO] --- maven-scala-plugin:2.15.2:compile (default) @ Common ---
+[INFO] Checking for multiple versions of scala
+[WARNING]  Expected all dependencies to require Scala version: 2.12.15
+[WARNING]  com.twitter:chill_2.12:0.10.0 requires scala version: 2.12.14
+[WARNING] Multiple versions of scala libraries detected!
+[INFO] includes = [**/*.java,**/*.scala,]
+[INFO] excludes = []
+[INFO] /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/common/DataGen/src/main:-1: info: compiling
+[INFO] /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/common/target/generated-sources/annotations:-1: info: compiling
+[INFO] Compiling 4 source files to /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/common/target/classes at 1702241361017
+[INFO] prepare-compile in 0 s
+[INFO] compile in 7 s
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ Common ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/common/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.3:testCompile (default-testCompile) @ Common ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- scala-maven-plugin:3.2.2:testCompile (scala-test-compile) @ Common ---
+[WARNING]  Expected all dependencies to require Scala version: 2.12.15
+[WARNING]  com.twitter:chill_2.12:0.10.0 requires scala version: 2.12.14
+[WARNING] Multiple versions of scala libraries detected!
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-scala-plugin:2.15.2:testCompile (default) @ Common ---
+[INFO] Checking for multiple versions of scala
+[WARNING]  Expected all dependencies to require Scala version: 2.12.15
+[WARNING]  com.twitter:chill_2.12:0.10.0 requires scala version: 2.12.14
+[WARNING] Multiple versions of scala libraries detected!
+[INFO] includes = [**/*.java,**/*.scala,]
+[INFO] excludes = []
+[WARNING] No source files found.
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ Common ---
+[INFO] 
+[INFO] --- maven-jar-plugin:2.6:jar (default-jar) @ Common ---
+[INFO] Building jar: /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/common/target/Common-1.0.jar
+[INFO] 
+[INFO] ------------------------< com.ibm:TerasortApp >-------------------------
+[INFO] Building TerasortApp 1.0                                          [3/20]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ TerasortApp ---
+[INFO] Deleting /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/Terasort/target
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ TerasortApp ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/Terasort/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.3:compile (default-compile) @ TerasortApp ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 2 source files to /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/Terasort/target/classes
+[INFO] 
+[INFO] --- scala-maven-plugin:3.2.2:compile (scala-compile) @ TerasortApp ---
+[WARNING]  Expected all dependencies to require Scala version: 2.12.15
+[WARNING]  com.twitter:chill_2.12:0.10.0 requires scala version: 2.12.14
+[WARNING] Multiple versions of scala libraries detected!
+[INFO] /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/Terasort/src/main/java:-1: info: compiling
+[INFO] /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/Terasort/target/generated-sources/annotations:-1: info: compiling
+[INFO] /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/Terasort/src/main/scala:-1: info: compiling
+[INFO] Compiling 8 source files to /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/Terasort/target/classes at 1702241374667
+[WARNING] warning: two deprecations (since 2.12.0); re-run with -deprecation for details
+[WARNING] warning: two deprecations (since 2.12.0); re-run with -deprecation for detailsone warning found
+[INFO] prepare-compile in 0 s
+[INFO] compile in 8 s
+[INFO] 
+[INFO] --- maven-scala-plugin:2.15.2:compile (default) @ TerasortApp ---
+[INFO] Checking for multiple versions of scala
+[WARNING]  Expected all dependencies to require Scala version: 2.12.15
+[WARNING]  com.twitter:chill_2.12:0.10.0 requires scala version: 2.12.14
+[WARNING] Multiple versions of scala libraries detected!
+[INFO] includes = [**/*.java,**/*.scala,]
+[INFO] excludes = []
+[INFO] /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/Terasort/src/main/java:-1: info: compiling
+[INFO] /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/Terasort/target/generated-sources/annotations:-1: info: compiling
+[INFO] /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/Terasort/src/main/scala:-1: info: compiling
+[INFO] Compiling 8 source files to /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/Terasort/target/classes at 1702241383987
+[WARNING] warning: two deprecations (since 2.12.0); re-run with -deprecation for details
+[WARNING] one warning found
+[INFO] prepare-compile in 0 s
+[INFO] compile in 10 s
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ TerasortApp ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/Terasort/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.3:testCompile (default-testCompile) @ TerasortApp ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- scala-maven-plugin:3.2.2:testCompile (scala-test-compile) @ TerasortApp ---
+[WARNING]  Expected all dependencies to require Scala version: 2.12.15
+[WARNING]  com.twitter:chill_2.12:0.10.0 requires scala version: 2.12.14
+[WARNING] Multiple versions of scala libraries detected!
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-scala-plugin:2.15.2:testCompile (default) @ TerasortApp ---
+[INFO] Checking for multiple versions of scala
+[WARNING]  Expected all dependencies to require Scala version: 2.12.15
+[WARNING]  com.twitter:chill_2.12:0.10.0 requires scala version: 2.12.14
+[WARNING] Multiple versions of scala libraries detected!
+[INFO] includes = [**/*.java,**/*.scala,]
+[INFO] excludes = []
+[WARNING] No source files found.
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ TerasortApp ---
+[INFO] 
+[INFO] --- maven-jar-plugin:2.6:jar (default-jar) @ TerasortApp ---
+[INFO] Building jar: /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/Terasort/target/TerasortApp-1.0.jar
+[INFO] 
+[INFO] --- maven-dependency-plugin:2.8:copy-dependencies (copy-dependencies) @ TerasortApp ---
+[INFO] 
+[INFO] --- maven-assembly-plugin:2.4.1:single (make-assembly) @ TerasortApp ---
+[INFO] Building jar: /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/Terasort/target/TerasortApp-1.0-jar-with-dependencies.jar
+[INFO] 
+[INFO] ---------------------------< com.ibm:PCAApp >---------------------------
+[INFO] Building PCAApp 1.0                                               [4/20]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ PCAApp ---
+[INFO] Deleting /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/PCA/target
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ PCAApp ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/PCA/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.3:compile (default-compile) @ PCAApp ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- scala-maven-plugin:3.2.2:compile (scala-compile) @ PCAApp ---
+[WARNING]  Expected all dependencies to require Scala version: 2.12.15
+[WARNING]  com.twitter:chill_2.12:0.10.0 requires scala version: 2.12.14
+[WARNING] Multiple versions of scala libraries detected!
+[INFO] /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/PCA/src/main/scala:-1: info: compiling
+[INFO] Compiling 2 source files to /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/PCA/target/classes at 1702241450817
+[INFO] prepare-compile in 0 s
+[INFO] compile in 6 s
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ PCAApp ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/PCA/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.3:testCompile (default-testCompile) @ PCAApp ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- scala-maven-plugin:3.2.2:testCompile (scala-test-compile) @ PCAApp ---
+[WARNING]  Expected all dependencies to require Scala version: 2.12.15
+[WARNING]  com.twitter:chill_2.12:0.10.0 requires scala version: 2.12.14
+[WARNING] Multiple versions of scala libraries detected!
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ PCAApp ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] --- maven-jar-plugin:2.6:jar (default-jar) @ PCAApp ---
+[INFO] Building jar: /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/PCA/target/PCAApp-1.0.jar
+[INFO] 
+[INFO] -------------------< com.ibm:LogisticRegressionApp >--------------------
+[INFO] Building LogisticRegressionApp 1.0                                [5/20]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ LogisticRegressionApp ---
+[INFO] Deleting /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/LogisticRegression/target
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ LogisticRegressionApp ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/LogisticRegression/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.3:compile (default-compile) @ LogisticRegressionApp ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 2 source files to /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/LogisticRegression/target/classes
+[INFO] 
+[INFO] --- scala-maven-plugin:3.2.2:compile (scala-compile) @ LogisticRegressionApp ---
+[WARNING]  Expected all dependencies to require Scala version: 2.12.15
+[WARNING]  com.twitter:chill_2.12:0.10.0 requires scala version: 2.12.14
+[WARNING] Multiple versions of scala libraries detected!
+[INFO] /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/LogisticRegression/src/main/java:-1: info: compiling
+[INFO] /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/LogisticRegression/target/generated-sources/annotations:-1: info: compiling
+[INFO] Compiling 2 source files to /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/LogisticRegression/target/classes at 1702241460923
+[INFO] prepare-compile in 0 s
+[INFO] compile in 4 s
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ LogisticRegressionApp ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/LogisticRegression/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.3:testCompile (default-testCompile) @ LogisticRegressionApp ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- scala-maven-plugin:3.2.2:testCompile (scala-test-compile) @ LogisticRegressionApp ---
+[WARNING]  Expected all dependencies to require Scala version: 2.12.15
+[WARNING]  com.twitter:chill_2.12:0.10.0 requires scala version: 2.12.14
+[WARNING] Multiple versions of scala libraries detected!
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ LogisticRegressionApp ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] --- maven-jar-plugin:2.6:jar (default-jar) @ LogisticRegressionApp ---
+[INFO] Building jar: /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/LogisticRegression/target/LogisticRegressionApp-1.0.jar
+[INFO] 
+[INFO] -------------------------< com.ibm:KMeansApp >--------------------------
+[INFO] Building KMeansApp 1.0                                            [6/20]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ KMeansApp ---
+[INFO] Deleting /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/KMeans/target
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ KMeansApp ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/KMeans/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.3:compile (default-compile) @ KMeansApp ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 2 source files to /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/KMeans/target/classes
+[INFO] 
+[INFO] --- scala-maven-plugin:3.2.2:compile (scala-compile) @ KMeansApp ---
+[WARNING]  Expected all dependencies to require Scala version: 2.12.15
+[WARNING]  com.twitter:chill_2.12:0.10.0 requires scala version: 2.12.14
+[WARNING] Multiple versions of scala libraries detected!
+[INFO] /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/KMeans/src/main/java:-1: info: compiling
+[INFO] /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/KMeans/target/generated-sources/annotations:-1: info: compiling
+[INFO] /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/KMeans/src/main/scala:-1: info: compiling
+[INFO] Compiling 5 source files to /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/KMeans/target/classes at 1702241468994
+[WARNING] /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/KMeans/src/main/scala/kmeans.scala:25: warning: Generated class KmeansApp$ differs only in case from KMeansApp$ (defined in KmeansApp.scala).
+[WARNING] /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/KMeans/src/main/scala/kmeans.scala:25: warning: Generated class KmeansApp$ differs only in case from KMeansApp$ (defined in KmeansApp.scala).two warnings found
+[WARNING]   Such classes will overwrite one another on case-insensitive filesystems.
+[WARNING] object KmeansApp {
+[WARNING]        ^
+[WARNING] /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/KMeans/src/main/scala/kmeans.scala:25: warning: Generated class KmeansApp differs only in case from KMeansApp (defined in KmeansApp.scala).
+[WARNING]   Such classes will overwrite one another on case-insensitive filesystems.
+[WARNING] object KmeansApp {
+[WARNING]        ^
+[INFO] prepare-compile in 0 s
+[INFO] compile in 6 s
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ KMeansApp ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/KMeans/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.3:testCompile (default-testCompile) @ KMeansApp ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- scala-maven-plugin:3.2.2:testCompile (scala-test-compile) @ KMeansApp ---
+[WARNING]  Expected all dependencies to require Scala version: 2.12.15
+[WARNING]  com.twitter:chill_2.12:0.10.0 requires scala version: 2.12.14
+[WARNING] Multiple versions of scala libraries detected!
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ KMeansApp ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] --- maven-jar-plugin:2.6:jar (default-jar) @ KMeansApp ---
+[INFO] Building jar: /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/KMeans/target/KMeansApp-1.0.jar
+[INFO] 
+[INFO] --------------------< com.ibm:LinearRegressionApp >---------------------
+[INFO] Building LinearRegressionApp 1.0                                  [7/20]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ LinearRegressionApp ---
+[INFO] Deleting /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/LinearRegression/target
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ LinearRegressionApp ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/LinearRegression/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.3:compile (default-compile) @ LinearRegressionApp ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 2 source files to /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/LinearRegression/target/classes
+[INFO] 
+[INFO] --- scala-maven-plugin:3.2.2:compile (scala-compile) @ LinearRegressionApp ---
+[WARNING]  Expected all dependencies to require Scala version: 2.12.15
+[WARNING]  com.twitter:chill_2.12:0.10.0 requires scala version: 2.12.14
+[WARNING] Multiple versions of scala libraries detected!
+[INFO] /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/LinearRegression/src/main/java:-1: info: compiling
+[INFO] /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/LinearRegression/target/generated-sources/annotations:-1: info: compiling
+[INFO] Compiling 2 source files to /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/LinearRegression/target/classes at 1702241479560
+[INFO] prepare-compile in 0 s
+[INFO] compile in 4 s
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ LinearRegressionApp ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/LinearRegression/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.3:testCompile (default-testCompile) @ LinearRegressionApp ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- scala-maven-plugin:3.2.2:testCompile (scala-test-compile) @ LinearRegressionApp ---
+[WARNING]  Expected all dependencies to require Scala version: 2.12.15
+[WARNING]  com.twitter:chill_2.12:0.10.0 requires scala version: 2.12.14
+[WARNING] Multiple versions of scala libraries detected!
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ LinearRegressionApp ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] --- maven-jar-plugin:2.6:jar (default-jar) @ LinearRegressionApp ---
+[INFO] Building jar: /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/LinearRegression/target/LinearRegressionApp-1.0.jar
+[INFO] 
+[INFO] ---------------------------< com.ibm:SVMApp >---------------------------
+[INFO] Building SVMApp 1.0                                               [8/20]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ SVMApp ---
+[INFO] Deleting /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/SVM/target
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ SVMApp ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/SVM/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.3:compile (default-compile) @ SVMApp ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 2 source files to /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/SVM/target/classes
+[INFO] 
+[INFO] --- scala-maven-plugin:3.2.2:compile (scala-compile) @ SVMApp ---
+[WARNING]  Expected all dependencies to require Scala version: 2.12.15
+[WARNING]  com.twitter:chill_2.12:0.10.0 requires scala version: 2.12.14
+[WARNING] Multiple versions of scala libraries detected!
+[INFO] /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/SVM/src/main/java:-1: info: compiling
+[INFO] /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/SVM/target/generated-sources/annotations:-1: info: compiling
+[INFO] /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/SVM/src/main/scala:-1: info: compiling
+[INFO] Compiling 4 source files to /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/SVM/target/classes at 1702241487824
+[INFO] prepare-compile in 0 s
+[INFO] compile in 6 s
+[INFO] 
+[INFO] --- maven-scala-plugin:2.15.2:compile (default) @ SVMApp ---
+[INFO] Checking for multiple versions of scala
+[WARNING]  Expected all dependencies to require Scala version: 2.12.15
+[WARNING]  com.twitter:chill_2.12:0.10.0 requires scala version: 2.12.14
+[WARNING] Multiple versions of scala libraries detected!
+[INFO] includes = [**/*.java,**/*.scala,]
+[INFO] excludes = []
+[INFO] /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/SVM/src/main/java:-1: info: compiling
+[INFO] /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/SVM/target/generated-sources/annotations:-1: info: compiling
+[INFO] /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/SVM/src/main/scala:-1: info: compiling
+[INFO] Compiling 4 source files to /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/SVM/target/classes at 1702241495152
+[INFO] prepare-compile in 0 s
+[INFO] compile in 8 s
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ SVMApp ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/SVM/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.3:testCompile (default-testCompile) @ SVMApp ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- scala-maven-plugin:3.2.2:testCompile (scala-test-compile) @ SVMApp ---
+[WARNING]  Expected all dependencies to require Scala version: 2.12.15
+[WARNING]  com.twitter:chill_2.12:0.10.0 requires scala version: 2.12.14
+[WARNING] Multiple versions of scala libraries detected!
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-scala-plugin:2.15.2:testCompile (default) @ SVMApp ---
+[INFO] Checking for multiple versions of scala
+[WARNING]  Expected all dependencies to require Scala version: 2.12.15
+[WARNING]  com.twitter:chill_2.12:0.10.0 requires scala version: 2.12.14
+[WARNING] Multiple versions of scala libraries detected!
+[INFO] includes = [**/*.java,**/*.scala,]
+[INFO] excludes = []
+[WARNING] No source files found.
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ SVMApp ---
+[INFO] 
+[INFO] --- maven-jar-plugin:2.6:jar (default-jar) @ SVMApp ---
+[INFO] Building jar: /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/SVM/target/SVMApp-1.0.jar
+[INFO] 
+[INFO] ----------------------< com.ibm:DecisionTreeApp >-----------------------
+[INFO] Building DecisionTreeApp 1.0                                      [9/20]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ DecisionTreeApp ---
+[INFO] Deleting /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/DecisionTree/target
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ DecisionTreeApp ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/DecisionTree/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.3:compile (default-compile) @ DecisionTreeApp ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 1 source file to /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/DecisionTree/target/classes
+[INFO] 
+[INFO] --- scala-maven-plugin:3.2.2:compile (scala-compile) @ DecisionTreeApp ---
+[WARNING]  Expected all dependencies to require Scala version: 2.12.15
+[WARNING]  com.twitter:chill_2.12:0.10.0 requires scala version: 2.12.14
+[WARNING] Multiple versions of scala libraries detected!
+[INFO] /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/DecisionTree/src/main/java:-1: info: compiling
+[INFO] /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/DecisionTree/target/generated-sources/annotations:-1: info: compiling
+[INFO] Compiling 1 source files to /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/DecisionTree/target/classes at 1702241506674
+[INFO] prepare-compile in 0 s
+[INFO] compile in 4 s
+[INFO] 
+[INFO] --- maven-scala-plugin:2.15.2:compile (default) @ DecisionTreeApp ---
+[INFO] Checking for multiple versions of scala
+[WARNING]  Expected all dependencies to require Scala version: 2.12.15
+[WARNING]  com.twitter:chill_2.12:0.10.0 requires scala version: 2.12.14
+[WARNING] Multiple versions of scala libraries detected!
+[INFO] includes = [**/*.java,**/*.scala,]
+[INFO] excludes = []
+[INFO] /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/DecisionTree/src/main/java:-1: info: compiling
+[INFO] /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/DecisionTree/target/generated-sources/annotations:-1: info: compiling
+[INFO] Compiling 1 source files to /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/DecisionTree/target/classes at 1702241511726
+[INFO] prepare-compile in 0 s
+[INFO] compile in 5 s
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ DecisionTreeApp ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/DecisionTree/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.3:testCompile (default-testCompile) @ DecisionTreeApp ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- scala-maven-plugin:3.2.2:testCompile (scala-test-compile) @ DecisionTreeApp ---
+[WARNING]  Expected all dependencies to require Scala version: 2.12.15
+[WARNING]  com.twitter:chill_2.12:0.10.0 requires scala version: 2.12.14
+[WARNING] Multiple versions of scala libraries detected!
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-scala-plugin:2.15.2:testCompile (default) @ DecisionTreeApp ---
+[INFO] Checking for multiple versions of scala
+[WARNING]  Expected all dependencies to require Scala version: 2.12.15
+[WARNING]  com.twitter:chill_2.12:0.10.0 requires scala version: 2.12.14
+[WARNING] Multiple versions of scala libraries detected!
+[INFO] includes = [**/*.java,**/*.scala,]
+[INFO] excludes = []
+[WARNING] No source files found.
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ DecisionTreeApp ---
+[INFO] 
+[INFO] --- maven-jar-plugin:2.6:jar (default-jar) @ DecisionTreeApp ---
+[INFO] Building jar: /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/DecisionTree/target/DecisionTreeApp-1.0.jar
+[INFO] 
+[INFO] ---------------------------< com.ibm:MFApp >----------------------------
+[INFO] Building MFApp 1.0                                               [10/20]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ MFApp ---
+[INFO] Deleting /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/MatrixFactorization/target
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ MFApp ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/MatrixFactorization/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.3:compile (default-compile) @ MFApp ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 1 source file to /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/MatrixFactorization/target/classes
+[INFO] 
+[INFO] --- scala-maven-plugin:3.2.2:compile (scala-compile) @ MFApp ---
+[WARNING]  Expected all dependencies to require Scala version: 2.12.15
+[WARNING]  com.twitter:chill_2.12:0.10.0 requires scala version: 2.12.14
+[WARNING] Multiple versions of scala libraries detected!
+[INFO] /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/MatrixFactorization/src/main/java:-1: info: compiling
+[INFO] /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/MatrixFactorization/target/generated-sources/annotations:-1: info: compiling
+[INFO] /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/MatrixFactorization/src/main/scala:-1: info: compiling
+[INFO] Compiling 3 source files to /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/MatrixFactorization/target/classes at 1702241521060
+[INFO] prepare-compile in 0 s
+[INFO] compile in 7 s
+[INFO] 
+[INFO] --- maven-scala-plugin:2.15.2:compile (default) @ MFApp ---
+[INFO] Checking for multiple versions of scala
+[WARNING]  Expected all dependencies to require Scala version: 2.12.15
+[WARNING]  com.twitter:chill_2.12:0.10.0 requires scala version: 2.12.14
+[WARNING] Multiple versions of scala libraries detected!
+[INFO] includes = [**/*.java,**/*.scala,]
+[INFO] excludes = []
+[INFO] /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/MatrixFactorization/src/main/java:-1: info: compiling
+[INFO] /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/MatrixFactorization/target/generated-sources/annotations:-1: info: compiling
+[INFO] /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/MatrixFactorization/src/main/scala:-1: info: compiling
+[INFO] Compiling 3 source files to /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/MatrixFactorization/target/classes at 1702241529019
+[INFO] prepare-compile in 0 s
+[INFO] compile in 9 s
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ MFApp ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/MatrixFactorization/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.3:testCompile (default-testCompile) @ MFApp ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- scala-maven-plugin:3.2.2:testCompile (scala-test-compile) @ MFApp ---
+[WARNING]  Expected all dependencies to require Scala version: 2.12.15
+[WARNING]  com.twitter:chill_2.12:0.10.0 requires scala version: 2.12.14
+[WARNING] Multiple versions of scala libraries detected!
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-scala-plugin:2.15.2:testCompile (default) @ MFApp ---
+[INFO] Checking for multiple versions of scala
+[WARNING]  Expected all dependencies to require Scala version: 2.12.15
+[WARNING]  com.twitter:chill_2.12:0.10.0 requires scala version: 2.12.14
+[WARNING] Multiple versions of scala libraries detected!
+[INFO] includes = [**/*.java,**/*.scala,]
+[INFO] excludes = []
+[WARNING] No source files found.
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ MFApp ---
+[INFO] 
+[INFO] --- maven-jar-plugin:2.6:jar (default-jar) @ MFApp ---
+[INFO] Building jar: /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/MatrixFactorization/target/MFApp-1.0.jar
+[INFO] 
+[INFO] ------------------------< com.ibm:PageRankApp >-------------------------
+[INFO] Building PageRankApp 1.0                                         [11/20]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ PageRankApp ---
+[INFO] Deleting /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/PageRank/target
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ PageRankApp ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/PageRank/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.3:compile (default-compile) @ PageRankApp ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- scala-maven-plugin:3.2.2:compile (scala-compile) @ PageRankApp ---
+[WARNING]  Expected all dependencies to require Scala version: 2.12.15
+[WARNING]  com.twitter:chill_2.12:0.10.0 requires scala version: 2.12.14
+[WARNING] Multiple versions of scala libraries detected!
+[INFO] /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/PageRank/src/main/scala:-1: info: compiling
+[INFO] Compiling 3 source files to /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/PageRank/target/classes at 1702241540252
+[INFO] prepare-compile in 0 s
+[INFO] compile in 6 s
+[INFO] 
+[INFO] --- maven-scala-plugin:2.15.2:compile (default) @ PageRankApp ---
+[INFO] Checking for multiple versions of scala
+[WARNING]  Expected all dependencies to require Scala version: 2.12.15
+[WARNING]  com.twitter:chill_2.12:0.10.0 requires scala version: 2.12.14
+[WARNING] Multiple versions of scala libraries detected!
+[INFO] includes = [**/*.java,**/*.scala,]
+[INFO] excludes = []
+[INFO] /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/PageRank/src/main/scala:-1: info: compiling
+[INFO] Compiling 3 source files to /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/PageRank/target/classes at 1702241547797
+[INFO] prepare-compile in 0 s
+[INFO] compile in 8 s
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ PageRankApp ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/PageRank/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.3:testCompile (default-testCompile) @ PageRankApp ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- scala-maven-plugin:3.2.2:testCompile (scala-test-compile) @ PageRankApp ---
+[WARNING]  Expected all dependencies to require Scala version: 2.12.15
+[WARNING]  com.twitter:chill_2.12:0.10.0 requires scala version: 2.12.14
+[WARNING] Multiple versions of scala libraries detected!
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-scala-plugin:2.15.2:testCompile (default) @ PageRankApp ---
+[INFO] Checking for multiple versions of scala
+[WARNING]  Expected all dependencies to require Scala version: 2.12.15
+[WARNING]  com.twitter:chill_2.12:0.10.0 requires scala version: 2.12.14
+[WARNING] Multiple versions of scala libraries detected!
+[INFO] includes = [**/*.java,**/*.scala,]
+[INFO] excludes = []
+[WARNING] No source files found.
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ PageRankApp ---
+[INFO] 
+[INFO] --- maven-jar-plugin:2.6:jar (default-jar) @ PageRankApp ---
+[INFO] Building jar: /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/PageRank/target/PageRankApp-1.0.jar
+[INFO] 
+[INFO] ----------------------< com.ibm:TriangleCountApp >----------------------
+[INFO] Building TriangleCountApp 1.0                                    [12/20]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ TriangleCountApp ---
+[INFO] Deleting /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/TriangleCount/target
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ TriangleCountApp ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/TriangleCount/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.3:compile (default-compile) @ TriangleCountApp ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- scala-maven-plugin:3.2.2:compile (scala-compile) @ TriangleCountApp ---
+[WARNING]  Expected all dependencies to require Scala version: 2.12.15
+[WARNING]  com.twitter:chill_2.12:0.10.0 requires scala version: 2.12.14
+[WARNING] Multiple versions of scala libraries detected!
+[INFO] /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/TriangleCount/src/main/scala:-1: info: compiling
+[INFO] Compiling 1 source files to /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/TriangleCount/target/classes at 1702241558473
+[INFO] prepare-compile in 0 s
+[INFO] compile in 5 s
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ TriangleCountApp ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/TriangleCount/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.3:testCompile (default-testCompile) @ TriangleCountApp ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- scala-maven-plugin:3.2.2:testCompile (scala-test-compile) @ TriangleCountApp ---
+[WARNING]  Expected all dependencies to require Scala version: 2.12.15
+[WARNING]  com.twitter:chill_2.12:0.10.0 requires scala version: 2.12.14
+[WARNING] Multiple versions of scala libraries detected!
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ TriangleCountApp ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] --- maven-jar-plugin:2.6:jar (default-jar) @ TriangleCountApp ---
+[INFO] Building jar: /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/TriangleCount/target/TriangleCountApp-1.0.jar
+[INFO] 
+[INFO] ---------------< com.ibm:StronglyConnectedComponentApp >----------------
+[INFO] Building StronglyConnectedComponentApp 1.0                       [13/20]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ StronglyConnectedComponentApp ---
+[INFO] Deleting /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/StronglyConnectedComponent/target
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ StronglyConnectedComponentApp ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/StronglyConnectedComponent/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.3:compile (default-compile) @ StronglyConnectedComponentApp ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- scala-maven-plugin:3.2.2:compile (scala-compile) @ StronglyConnectedComponentApp ---
+[WARNING]  Expected all dependencies to require Scala version: 2.12.15
+[WARNING]  com.twitter:chill_2.12:0.10.0 requires scala version: 2.12.14
+[WARNING] Multiple versions of scala libraries detected!
+[INFO] /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/StronglyConnectedComponent/src/main/scala:-1: info: compiling
+[INFO] Compiling 1 source files to /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/StronglyConnectedComponent/target/classes at 1702241566200
+[INFO] prepare-compile in 0 s
+[INFO] compile in 5 s
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ StronglyConnectedComponentApp ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/StronglyConnectedComponent/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.3:testCompile (default-testCompile) @ StronglyConnectedComponentApp ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- scala-maven-plugin:3.2.2:testCompile (scala-test-compile) @ StronglyConnectedComponentApp ---
+[WARNING]  Expected all dependencies to require Scala version: 2.12.15
+[WARNING]  com.twitter:chill_2.12:0.10.0 requires scala version: 2.12.14
+[WARNING] Multiple versions of scala libraries detected!
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ StronglyConnectedComponentApp ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] --- maven-jar-plugin:2.6:jar (default-jar) @ StronglyConnectedComponentApp ---
+[INFO] Building jar: /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/StronglyConnectedComponent/target/StronglyConnectedComponentApp-1.0.jar
+[INFO] 
+[INFO] ----------------------< com.ibm:ShortestPathsApp >----------------------
+[INFO] Building ShortestPathsApp 1.0                                    [14/20]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ ShortestPathsApp ---
+[INFO] Deleting /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/ShortestPaths/target
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ ShortestPathsApp ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/ShortestPaths/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.3:compile (default-compile) @ ShortestPathsApp ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- scala-maven-plugin:3.2.2:compile (scala-compile) @ ShortestPathsApp ---
+[WARNING]  Expected all dependencies to require Scala version: 2.12.15
+[WARNING]  com.twitter:chill_2.12:0.10.0 requires scala version: 2.12.14
+[WARNING] Multiple versions of scala libraries detected!
+[INFO] /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/ShortestPaths/src/main/scala:-1: info: compiling
+[INFO] Compiling 1 source files to /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/ShortestPaths/target/classes at 1702241574038
+[INFO] prepare-compile in 0 s
+[INFO] compile in 6 s
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ ShortestPathsApp ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/ShortestPaths/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.3:testCompile (default-testCompile) @ ShortestPathsApp ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- scala-maven-plugin:3.2.2:testCompile (scala-test-compile) @ ShortestPathsApp ---
+[WARNING]  Expected all dependencies to require Scala version: 2.12.15
+[WARNING]  com.twitter:chill_2.12:0.10.0 requires scala version: 2.12.14
+[WARNING] Multiple versions of scala libraries detected!
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ ShortestPathsApp ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] --- maven-jar-plugin:2.6:jar (default-jar) @ ShortestPathsApp ---
+[INFO] Building jar: /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/ShortestPaths/target/ShortestPathsApp-1.0.jar
+[INFO] 
+[INFO] -----------------------< com.ibm:SVDPlusPlusApp >-----------------------
+[INFO] Building SVDPlusPlusApp 1.0                                      [15/20]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ SVDPlusPlusApp ---
+[INFO] Deleting /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/SVDPlusPlus/target
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ SVDPlusPlusApp ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/SVDPlusPlus/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.3:compile (default-compile) @ SVDPlusPlusApp ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- scala-maven-plugin:3.2.2:compile (scala-compile) @ SVDPlusPlusApp ---
+[WARNING]  Expected all dependencies to require Scala version: 2.12.15
+[WARNING]  com.twitter:chill_2.12:0.10.0 requires scala version: 2.12.14
+[WARNING] Multiple versions of scala libraries detected!
+[INFO] /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/SVDPlusPlus/src/main/scala:-1: info: compiling
+[INFO] Compiling 1 source files to /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/SVDPlusPlus/target/classes at 1702241582301
+[INFO] prepare-compile in 0 s
+[INFO] compile in 6 s
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ SVDPlusPlusApp ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/SVDPlusPlus/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.3:testCompile (default-testCompile) @ SVDPlusPlusApp ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- scala-maven-plugin:3.2.2:testCompile (scala-test-compile) @ SVDPlusPlusApp ---
+[WARNING]  Expected all dependencies to require Scala version: 2.12.15
+[WARNING]  com.twitter:chill_2.12:0.10.0 requires scala version: 2.12.14
+[WARNING] Multiple versions of scala libraries detected!
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ SVDPlusPlusApp ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] --- maven-jar-plugin:2.6:jar (default-jar) @ SVDPlusPlusApp ---
+[INFO] Building jar: /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/SVDPlusPlus/target/SVDPlusPlusApp-1.0.jar
+[INFO] 
+[INFO] --------------------< com.ibm:LabelPropagationApp >---------------------
+[INFO] Building LabelPropagationApp 1.0                                 [16/20]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ LabelPropagationApp ---
+[INFO] Deleting /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/LabelPropagation/target
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ LabelPropagationApp ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/LabelPropagation/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.3:compile (default-compile) @ LabelPropagationApp ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- scala-maven-plugin:3.2.2:compile (scala-compile) @ LabelPropagationApp ---
+[WARNING]  Expected all dependencies to require Scala version: 2.12.15
+[WARNING]  com.twitter:chill_2.12:0.10.0 requires scala version: 2.12.14
+[WARNING] Multiple versions of scala libraries detected!
+[INFO] /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/LabelPropagation/src/main/scala:-1: info: compiling
+[INFO] Compiling 1 source files to /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/LabelPropagation/target/classes at 1702241591257
+[INFO] prepare-compile in 0 s
+[INFO] compile in 6 s
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ LabelPropagationApp ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/LabelPropagation/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.3:testCompile (default-testCompile) @ LabelPropagationApp ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- scala-maven-plugin:3.2.2:testCompile (scala-test-compile) @ LabelPropagationApp ---
+[WARNING]  Expected all dependencies to require Scala version: 2.12.15
+[WARNING]  com.twitter:chill_2.12:0.10.0 requires scala version: 2.12.14
+[WARNING] Multiple versions of scala libraries detected!
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ LabelPropagationApp ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] --- maven-jar-plugin:2.6:jar (default-jar) @ LabelPropagationApp ---
+[INFO] Building jar: /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/LabelPropagation/target/LabelPropagationApp-1.0.jar
+[INFO] 
+[INFO] -------------------< com.ibm:ConnectedComponentApp >--------------------
+[INFO] Building ConnectedComponentApp 1.0                               [17/20]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ ConnectedComponentApp ---
+[INFO] Deleting /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/ConnectedComponent/target
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ ConnectedComponentApp ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/ConnectedComponent/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.3:compile (default-compile) @ ConnectedComponentApp ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- scala-maven-plugin:3.2.2:compile (scala-compile) @ ConnectedComponentApp ---
+[WARNING]  Expected all dependencies to require Scala version: 2.12.15
+[WARNING]  com.twitter:chill_2.12:0.10.0 requires scala version: 2.12.14
+[WARNING] Multiple versions of scala libraries detected!
+[INFO] /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/ConnectedComponent/src/main/scala:-1: info: compiling
+[INFO] Compiling 1 source files to /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/ConnectedComponent/target/classes at 1702241600384
+[INFO] prepare-compile in 0 s
+[INFO] compile in 6 s
+[INFO] 
+[INFO] --- maven-scala-plugin:2.15.2:compile (default) @ ConnectedComponentApp ---
+[INFO] Checking for multiple versions of scala
+[WARNING]  Expected all dependencies to require Scala version: 2.12.15
+[WARNING]  com.twitter:chill_2.12:0.10.0 requires scala version: 2.12.14
+[WARNING] Multiple versions of scala libraries detected!
+[INFO] includes = [**/*.java,**/*.scala,]
+[INFO] excludes = []
+[INFO] /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/ConnectedComponent/src/main/scala:-1: info: compiling
+[INFO] Compiling 1 source files to /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/ConnectedComponent/target/classes at 1702241607081
+[INFO] prepare-compile in 0 s
+[INFO] compile in 7 s
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ ConnectedComponentApp ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/ConnectedComponent/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.3:testCompile (default-testCompile) @ ConnectedComponentApp ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- scala-maven-plugin:3.2.2:testCompile (scala-test-compile) @ ConnectedComponentApp ---
+[WARNING]  Expected all dependencies to require Scala version: 2.12.15
+[WARNING]  com.twitter:chill_2.12:0.10.0 requires scala version: 2.12.14
+[WARNING] Multiple versions of scala libraries detected!
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-scala-plugin:2.15.2:testCompile (default) @ ConnectedComponentApp ---
+[INFO] Checking for multiple versions of scala
+[WARNING]  Expected all dependencies to require Scala version: 2.12.15
+[WARNING]  com.twitter:chill_2.12:0.10.0 requires scala version: 2.12.14
+[WARNING] Multiple versions of scala libraries detected!
+[INFO] includes = [**/*.java,**/*.scala,]
+[INFO] excludes = []
+[WARNING] No source files found.
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ ConnectedComponentApp ---
+[INFO] 
+[INFO] --- maven-jar-plugin:2.6:jar (default-jar) @ ConnectedComponentApp ---
+[INFO] Building jar: /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/ConnectedComponent/target/ConnectedComponentApp-1.0.jar
+[INFO] 
+[INFO] ---------------------< com.ibm:PregelOperationApp >---------------------
+[INFO] Building PregelOperationApp 1.0                                  [18/20]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ PregelOperationApp ---
+[INFO] Deleting /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/PregelOperation/target
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ PregelOperationApp ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/PregelOperation/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.3:compile (default-compile) @ PregelOperationApp ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- scala-maven-plugin:3.2.2:compile (scala-compile) @ PregelOperationApp ---
+[WARNING]  Expected all dependencies to require Scala version: 2.12.15
+[WARNING]  com.twitter:chill_2.12:0.10.0 requires scala version: 2.12.14
+[WARNING] Multiple versions of scala libraries detected!
+[INFO] /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/PregelOperation/src/main/scala:-1: info: compiling
+[INFO] Compiling 1 source files to /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/PregelOperation/target/classes at 1702241616205
+[INFO] prepare-compile in 0 s
+[INFO] compile in 6 s
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ PregelOperationApp ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/PregelOperation/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.3:testCompile (default-testCompile) @ PregelOperationApp ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- scala-maven-plugin:3.2.2:testCompile (scala-test-compile) @ PregelOperationApp ---
+[WARNING]  Expected all dependencies to require Scala version: 2.12.15
+[WARNING]  com.twitter:chill_2.12:0.10.0 requires scala version: 2.12.14
+[WARNING] Multiple versions of scala libraries detected!
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ PregelOperationApp ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] --- maven-jar-plugin:2.6:jar (default-jar) @ PregelOperationApp ---
+[INFO] Building jar: /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/PregelOperation/target/PregelOperationApp-1.0.jar
+[INFO] 
+[INFO] ---------------------------< com.ibm:SQLApp >---------------------------
+[INFO] Building SQLApp 1.0                                              [19/20]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ SQLApp ---
+[INFO] Deleting /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/SQL/target
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ SQLApp ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/SQL/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.3:compile (default-compile) @ SQLApp ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- scala-maven-plugin:3.2.2:compile (scala-compile) @ SQLApp ---
+[WARNING]  Expected all dependencies to require Scala version: 2.12.15
+[WARNING]  com.twitter:chill_2.12:0.10.0 requires scala version: 2.12.14
+[WARNING] Multiple versions of scala libraries detected!
+[INFO] /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/SQL/src/main/scala:-1: info: compiling
+[INFO] Compiling 2 source files to /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/SQL/target/classes at 1702241629076
+[WARNING] warning: 6 deprecations (since 2.0.0); re-run with -deprecation for details
+[WARNING] one warning found
+[INFO] prepare-compile in 0 s
+[INFO] compile in 8 s
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ SQLApp ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/SQL/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.3:testCompile (default-testCompile) @ SQLApp ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- scala-maven-plugin:3.2.2:testCompile (scala-test-compile) @ SQLApp ---
+[WARNING]  Expected all dependencies to require Scala version: 2.12.15
+[WARNING]  com.twitter:chill_2.12:0.10.0 requires scala version: 2.12.14
+[WARNING] Multiple versions of scala libraries detected!
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ SQLApp ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] --- maven-jar-plugin:2.6:jar (default-jar) @ SQLApp ---
+[INFO] Building jar: /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/SQL/target/SQLApp-1.0.jar
+[INFO] 
+[INFO] ------------------------< com.ibm:StreamingApp >------------------------
+[INFO] Building StreamingApp 1.0                                        [20/20]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ StreamingApp ---
+[INFO] Deleting /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/Streaming/target
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ StreamingApp ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/Streaming/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.3:compile (default-compile) @ StreamingApp ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- scala-maven-plugin:3.2.2:compile (scala-compile) @ StreamingApp ---
+[WARNING]  Expected all dependencies to require Scala version: 2.12.15
+[WARNING]  com.twitter:chill_2.12:0.10.0 requires scala version: 2.12.14
+[WARNING] Multiple versions of scala libraries detected!
+[INFO] /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/Streaming/src/main/scala:-1: info: compiling
+[INFO] Compiling 3 source files to /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/Streaming/target/classes at 1702241639834
+[INFO] prepare-compile in 0 s
+[INFO] compile in 7 s
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ StreamingApp ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/Streaming/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.3:testCompile (default-testCompile) @ StreamingApp ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- scala-maven-plugin:3.2.2:testCompile (scala-test-compile) @ StreamingApp ---
+[WARNING]  Expected all dependencies to require Scala version: 2.12.15
+[WARNING]  com.twitter:chill_2.12:0.10.0 requires scala version: 2.12.14
+[WARNING] Multiple versions of scala libraries detected!
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ StreamingApp ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] --- maven-jar-plugin:2.6:jar (default-jar) @ StreamingApp ---
+[INFO] Building jar: /home1/public/mariach/TeraHeap/tera_applications/spark/spark-bench/Streaming/target/StreamingApp-1.0.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary:
+[INFO] 
+[INFO] SparkBench 2.0 ..................................... SUCCESS [  5.356 s]
+[INFO] Common 1.0 ......................................... SUCCESS [ 54.828 s]
+[INFO] TerasortApp 1.0 .................................... SUCCESS [01:18 min]
+[INFO] PCAApp 1.0 ......................................... SUCCESS [  8.512 s]
+[INFO] LogisticRegressionApp 1.0 .......................... SUCCESS [  8.497 s]
+[INFO] KMeansApp 1.0 ...................................... SUCCESS [ 10.165 s]
+[INFO] LinearRegressionApp 1.0 ............................ SUCCESS [  8.413 s]
+[INFO] SVMApp 1.0 ......................................... SUCCESS [ 19.015 s]
+[INFO] DecisionTreeApp 1.0 ................................ SUCCESS [ 14.145 s]
+[INFO] MFApp 1.0 .......................................... SUCCESS [ 20.743 s]
+[INFO] PageRankApp 1.0 .................................... SUCCESS [ 18.243 s]
+[INFO] TriangleCountApp 1.0 ............................... SUCCESS [  7.870 s]
+[INFO] StronglyConnectedComponentApp 1.0 .................. SUCCESS [  7.699 s]
+[INFO] ShortestPathsApp 1.0 ............................... SUCCESS [  8.176 s]
+[INFO] SVDPlusPlusApp 1.0 ................................. SUCCESS [  8.985 s]
+[INFO] LabelPropagationApp 1.0 ............................ SUCCESS [  9.040 s]
+[INFO] ConnectedComponentApp 1.0 .......................... SUCCESS [ 16.062 s]
+[INFO] PregelOperationApp 1.0 ............................. SUCCESS [  8.020 s]
+[INFO] SQLApp 1.0 ......................................... SUCCESS [ 15.439 s]
+[INFO] StreamingApp 1.0 ................................... SUCCESS [  9.515 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 05:37 min
+[INFO] Finished at: 2023-12-10T22:54:08+02:00
+[INFO] ------------------------------------------------------------------------
+Build all done!

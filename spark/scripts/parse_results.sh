@@ -52,29 +52,43 @@ do
     esac
 done
 
+
+# The pasuses in conc marking (cm stw phases, young gcs, full gcs)
+CM_PAUSES=$(python cm_pauses.py "${RESULT_DIR}/gc.log" | awk '{ sum += $1 } END { print sum/1000.0 }')
+
+#getrusage times for conc threads during CM
+ONLY_CONC_T=$(grep "Clean" ${RESULT_DIR}/gc.log | grep -oP '(\d+\.\d+)ms$' | awk '{ sum += $1 } END { print sum/1000.0 }')
+
+#total CM time including idle time and gcs
+CONC_C=$(grep "Concurrent Mark Cycle" ${RESULT_DIR}/gc.log | grep -oP '(\d+\.\d+)ms$' | wc -l)
+CONC_T=$(grep "Concurrent Mark Cycle" ${RESULT_DIR}/gc.log | grep -oP '(\d+\.\d+)ms$' | awk '{ sum += $1 } END { print sum/1000.0 }')
+# CONC_T=$(echo "${CONC_T} - ${CLEANUP_GC_T} - ${REMARK_GC_T}" | bc -l)   
+
+
+
 TOTAL_TIME=$(tail -n 1 ${RESULT_DIR}/total_time.txt | awk '{split($0,a,","); print a[3]}')
 
 FULL_GC_C=$(grep "Full" ${RESULT_DIR}/gc.log | wc -l)
-FULL_GC_T=$(grep "Full" ${RESULT_DIR}/gc.log | grep -oP '(\d+\.\d+)ms$' | awk '{ sum += $1 } END { print sum/1000 }')
+FULL_GC_T=$(grep "Full" ${RESULT_DIR}/gc.log | grep -oP '(\d+\.\d+)ms$' | awk '{ sum += $1 } END { print sum/1000.0 }')
 
 YOUNG_GC_C=$(grep "Young" ${RESULT_DIR}/gc.log | grep -v "(Mixed)" | wc -l)
-YOUNG_GC_T=$(grep "Young" ${RESULT_DIR}/gc.log | grep -v "(Mixed)" | grep -oP '(\d+\.\d+)ms$' | awk '{ sum += $1 } END { print sum/1000 }')
+YOUNG_GC_T=$(grep "Young" ${RESULT_DIR}/gc.log | grep -v "(Mixed)" | grep -oP '(\d+\.\d+)ms$' | awk '{ sum += $1 } END { print sum/1000.0 }')
 
 MIX_GC_C=$(grep "(Mixed)" ${RESULT_DIR}/gc.log | wc -l)
-MIX_GC_T=$(grep "(Mixed)" ${RESULT_DIR}/gc.log | grep -oP '(\d+\.\d+)ms$' | awk '{ sum += $1 } END { print sum/1000 }')
+MIX_GC_T=$(grep "(Mixed)" ${RESULT_DIR}/gc.log | grep -oP '(\d+\.\d+)ms$' | awk '{ sum += $1 } END { print sum/1000.0 }')
 
-
+#remark phase cm stw
 REMARK_GC_C=$(grep "Pause Remark" ${RESULT_DIR}/gc.log | wc -l)
-REMARK_GC_T=$(grep "Pause Remark" ${RESULT_DIR}/gc.log | grep -oP '(\d+\.\d+)ms$' | awk '{ sum += $1 } END { print sum/1000 }')
+REMARK_GC_T=$(grep "Pause Remark" ${RESULT_DIR}/gc.log | grep -oP '(\d+\.\d+)ms$' | awk '{ sum += $1 } END { print sum/1000.0 }')
 
+#cleanup phase cm stw
 CLEANUP_GC_C=$(grep "Pause Cleanup" ${RESULT_DIR}/gc.log | wc -l)
-CLEANUP_GC_T=$(grep "Pause Cleanup" ${RESULT_DIR}/gc.log | grep -oP '(\d+\.\d+)ms$' | awk '{ sum += $1 } END { print sum/1000 }')
+CLEANUP_GC_T=$(grep "Pause Cleanup" ${RESULT_DIR}/gc.log | grep -oP '(\d+\.\d+)ms$' | awk '{ sum += $1 } END { print sum/1000.0 }')
 
-CONC_C=$(grep "Concurrent Mark Cycle" ${RESULT_DIR}/gc.log | grep -oP '(\d+\.\d+)ms$' | wc -l)
-CONC_T=$(grep "Concurrent Mark Cycle" ${RESULT_DIR}/gc.log | grep -oP '(\d+\.\d+)ms$' | awk '{ sum += $1 } END { print sum/1000 }')
-CONC_T=$(echo "${CONC_T} - ${CLEANUP_GC_T} - ${REMARK_GC_T}" | bc -l)   
+STW_WITH_CM=$(echo "${FULL_GC_T} + ${YOUNG_GC_T} + ${MIX_GC_T} + ${CLEANUP_GC_T} + ${REMARK_GC_T}" | bc -l) 
+STW=$(echo "${FULL_GC_T} + ${YOUNG_GC_T} + ${MIX_GC_T}" | bc -l) 
 
-STW=$(echo "${FULL_GC_T} + ${YOUNG_GC_T} + ${MIX_GC_T} + ${CLEANUP_GC_T} + ${REMARK_GC_T}" | bc -l) 
+CACHE_MISSES=$(grep "Cache" ${RESULT_DIR}/gc.log | grep -oP '(\d+)$' | awk '{ sum += $1 } END { print sum }')
 
 # Caclulate the overheads in TeraHeap card table traversal, marking and adjust phases
 if [ $TH ]
@@ -100,13 +114,19 @@ do
     | sed 's/,//g' \
     | sed 's/(//g' \
     | head -n 1)
+  ALL_SAMPLES=$(grep -w "<title>all" "${RESULT_DIR}"/profile.svg \
+   | awk '{print $2}' \
+   | sed 's/(//g' \
+   | sed 's/,//g')
 
-  NET_TIME=$(echo "${TOTAL_TIME} - ${STW} - ${CONC_T}" | bc -l) # time the mutator threads were running (aka. only the java application)
+  NET_TIME=$(echo "${TOTAL_TIME} - ${STW_WITH_CM}" | bc -l) # time the mutator threads were running (aka. only the java application)
   SD_SAMPLES=$(echo "${SER_SAMPLES} + ${DESER_SAMPLES}" | bc -l)
-  SERDES+=($(echo "${SD_SAMPLES} * ${NET_TIME} / ${APP_THREAD_SAMPLES}" | bc -l))
+
+  SERDES_WITH_NET+=($(echo "${SD_SAMPLES} * ${NET_TIME} / ${APP_THREAD_SAMPLES}" | bc -l))
+  SERDES_WITH_ALL+=($(echo "${SD_SAMPLES} * ${TOTAL_TIME} / ${ALL_SAMPLES}" | bc -l))
 done
 
-OTHER=$(echo "${TOTAL_TIME} - ${STW} - ${CONC_T} - ${SERDES}" | bc -l) 
+OTHER=$(echo "${TOTAL_TIME} - ${STW} - ${SERDES}" | bc -l) 
 
 
 
@@ -118,20 +138,28 @@ OTHER=$(echo "${TOTAL_TIME} - ${STW} - ${CONC_T} - ${SERDES}" | bc -l)
 
   for ((i=0; i<NUM_EXECUTORS; i++))
   do
-    echo "SERDES,${SERDES[$i]}"
+    echo "SERDES_WITH_NET,${SERDES_WITH_NET[$i]}"
+    echo "SERDES_WITH_ALL,${SERDES_WITH_ALL[$i]}"
   done
-
-  echo "CONC,${CONC_T},${CONC_C}"
 
   echo "YOUNG_GC,${YOUNG_GC_T},${YOUNG_GC_C}"
   echo "MIXED_GC,${MIX_GC_T},${MIX_GC_C}"
   echo "FULL_GC,${FULL_GC_T},${FULL_GC_C}"
 
+  echo ""
+
+  echo "CONC,${CONC_T},${CONC_C}"
+  echo "ONLY_CONC_T,${ONLY_CONC_T}"
+  echo "CM_PAUSES,${CM_PAUSES}"
   echo "REMARK_PAUSE,${REMARK_GC_T},${REMARK_GC_C}"
   echo "CLEANUP_PAUSE,${CLEANUP_GC_T},${CLEANUP_GC_C}"
+
+  echo ""
   
   echo "STW,${STW}"
-
+  echo "STW_WITH_CM,${STW_WITH_CM}"
+  
+  echo "CACHE_MISSES,${CACHE_MISSES}"
 
   echo "TIME_TO_SCAN_H2,${TIME_SCAN_H2}"
   echo "BYTES_MOVED_IN_H2,${BYTES_IN_H2}"

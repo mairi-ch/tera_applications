@@ -9,7 +9,7 @@
 # @email:    nickpapac@ics.forth.gr
 #
 # Create Ramdisk file in Centos 7 
-# Work for sith1
+# Work for sith3
 # WARNING: Before use it move it to /tmp
 #
 ###################################################

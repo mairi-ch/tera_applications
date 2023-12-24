@@ -282,7 +282,11 @@ do
   esac
 done
 
-fallocate -l 700G /tmp/nvme/mariach/H2.txt
+# if the file does not exist then create it
+if [ ! -f /tmp/nvme/mariach/H2.txt ]
+then
+  fallocate -l 700G /tmp/nvme/mariach/H2.txt
+fi
 
 # Create directory for the results if do not exist
 TIME=$(date +"%T-%d-%m-%Y")
@@ -297,7 +301,8 @@ gen_config_files
 
 download_third_party
 
-build_async_profiler
+# build_async_profiler #already exist. only did once
+
 
 # Run each benchmark
 for benchmark in "${BENCHMARKS[@]}"

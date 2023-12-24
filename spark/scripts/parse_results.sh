@@ -54,15 +54,15 @@ done
 
 
 # The pasuses in conc marking (cm stw phases, young gcs, full gcs)
-CM_PAUSES=$(python cm_pauses.py "${RESULT_DIR}/gc.log" | awk '{ sum += $1 } END { print sum/1000.0 }')
+CM_GC_PAUSES=$(python cm_pauses.py "${RESULT_DIR}/gc.log" | awk '{ sum += $1 } END { print sum/1000.0 }')
 
 #getrusage times for conc threads during CM
-ONLY_CONC_T=$(grep "Clean" ${RESULT_DIR}/gc.log | grep -oP '(\d+\.\d+)ms$' | awk '{ sum += $1 } END { print sum/1000.0 }')
+CM_CPU_TIME=$(grep "Clean" ${RESULT_DIR}/gc.log | grep -oP '(\d+\.\d+)ms$' | awk '{ sum += $1 } END { print sum/1000.0 }')
 
 #total CM time including idle time and gcs
-CONC_C=$(grep "Concurrent Mark Cycle" ${RESULT_DIR}/gc.log | grep -oP '(\d+\.\d+)ms$' | wc -l)
-CONC_T=$(grep "Concurrent Mark Cycle" ${RESULT_DIR}/gc.log | grep -oP '(\d+\.\d+)ms$' | awk '{ sum += $1 } END { print sum/1000.0 }')
-# CONC_T=$(echo "${CONC_T} - ${CLEANUP_GC_T} - ${REMARK_GC_T}" | bc -l)   
+CM_C=$(grep "Concurrent Mark Cycle" ${RESULT_DIR}/gc.log | grep -oP '(\d+\.\d+)ms$' | wc -l)
+CM_T=$(grep "Concurrent Mark Cycle" ${RESULT_DIR}/gc.log | grep -oP '(\d+\.\d+)ms$' | awk '{ sum += $1 } END { print sum/1000.0 }')
+# CM_T=$(echo "${CM_T} - ${CLEANUP_GC_T} - ${REMARK_GC_T}" | bc -l)   
 
 
 
@@ -85,8 +85,23 @@ REMARK_GC_T=$(grep "Pause Remark" ${RESULT_DIR}/gc.log | grep -oP '(\d+\.\d+)ms$
 CLEANUP_GC_C=$(grep "Pause Cleanup" ${RESULT_DIR}/gc.log | wc -l)
 CLEANUP_GC_T=$(grep "Pause Cleanup" ${RESULT_DIR}/gc.log | grep -oP '(\d+\.\d+)ms$' | awk '{ sum += $1 } END { print sum/1000.0 }')
 
-STW_WITH_CM=$(echo "${FULL_GC_T} + ${YOUNG_GC_T} + ${MIX_GC_T} + ${CLEANUP_GC_T} + ${REMARK_GC_T}" | bc -l) 
+CM_STW=$(echo "${CLEANUP_GC_T} + ${REMARK_GC_T}" | bc -l) 
 STW=$(echo "${FULL_GC_T} + ${YOUNG_GC_T} + ${MIX_GC_T}" | bc -l) 
+STW_WITH_CM=$(echo "${CM_STW} + ${STW}" | bc -l) 
+
+
+
+#those are cpu time (no idle included)
+REFINE_MUTATOR_CPU=$(grep "Mutator refinement vtime" ${RESULT_DIR}/gc.log | grep -oP '(\d+\.\d+)ms$' | awk '{ sum += $1 } END { print sum }')
+REFINE_CONC_CPU=$(grep "Concurrent refinement vtime" ${RESULT_DIR}/gc.log | grep -oP '(\d+\.\d+)ms$' | awk '{ sum += $1 } END { print sum }')
+REFINE_TOTAL_CPU=$(grep "Total refinement vtime" ${RESULT_DIR}/gc.log | grep -oP '(\d+\.\d+)ms$' | awk '{ sum += $1 } END { print sum }')
+REFINE_TOTAL_REF_CPU=$(grep "Refinement thread time" ${RESULT_DIR}/gc.log | grep -oP '(\d+\.\d+)ms$' | awk '{ sum += $1 } END { print sum }')
+
+#those are clock time
+REFINE_MUTATOR_WALL=$(grep "Mutator refinement:" ${RESULT_DIR}/gc.log | grep -oP '(\d+\.\d+)ms' | awk '{ sum += $1 } END { print sum }')
+REFINE_CONC_WALL=$(grep "Concurrent refinement:" ${RESULT_DIR}/gc.log | grep -oP '(\d+\.\d+)ms' | awk '{ sum += $1 } END { print sum }')
+REFINE_TOTAL_WALL=$(grep "Total refinement:" ${RESULT_DIR}/gc.log | grep -oP '(\d+\.\d+)ms' | awk '{ sum += $1 } END { print sum }')
+
 
 CACHE_MISSES=$(grep "Cache" ${RESULT_DIR}/gc.log | grep -oP '(\d+)$' | awk '{ sum += $1 } END { print sum }')
 
@@ -126,7 +141,8 @@ do
   SERDES_WITH_ALL+=($(echo "${SD_SAMPLES} * ${TOTAL_TIME} / ${ALL_SAMPLES}" | bc -l))
 done
 
-OTHER=$(echo "${TOTAL_TIME} - ${STW} - ${SERDES}" | bc -l) 
+OTHER=$(echo "${TOTAL_TIME} - ${STW} - ${SERDES_WITH_ALL}" | bc -l) 
+CM_WALL_NO_PAUSES=$(echo "${CM_WALL_TIME} - ${CM_GC_PAUSES} - ${CM_STW}" | bc -l) 
 
 
 
@@ -138,8 +154,7 @@ OTHER=$(echo "${TOTAL_TIME} - ${STW} - ${SERDES}" | bc -l)
 
   for ((i=0; i<NUM_EXECUTORS; i++))
   do
-    echo "SERDES_WITH_NET,${SERDES_WITH_NET[$i]}"
-    echo "SERDES_WITH_ALL,${SERDES_WITH_ALL[$i]}"
+    echo "SERDES,${SERDES_WITH_ALL[$i]}"
   done
 
   echo "YOUNG_GC,${YOUNG_GC_T},${YOUNG_GC_C}"
@@ -148,19 +163,34 @@ OTHER=$(echo "${TOTAL_TIME} - ${STW} - ${SERDES}" | bc -l)
 
   echo ""
 
-  echo "CONC,${CONC_T},${CONC_C}"
-  echo "ONLY_CONC_T,${ONLY_CONC_T}"
-  echo "CM_PAUSES,${CM_PAUSES}"
-  echo "REMARK_PAUSE,${REMARK_GC_T},${REMARK_GC_C}"
-  echo "CLEANUP_PAUSE,${CLEANUP_GC_T},${CLEANUP_GC_C}"
+  echo "CM_WALL_TIME,${CM_T},${CM_C}"
+  echo "CM_GC_PAUSES,${CM_GC_PAUSES}"
+  echo "CM_STW,${CM_STW}"
+  echo "CM_WALL_NO_PAUSES,${CM_WALL_NO_PAUSES}"
+
 
   echo ""
-  
-  echo "STW,${STW}"
-  echo "STW_WITH_CM,${STW_WITH_CM}"
-  
-  echo "CACHE_MISSES,${CACHE_MISSES}"
+  echo "REFINE_MUTATOR_CPU,${REFINE_MUTATOR_CPU}"
+  echo "REFINE_CONC_CPU,${REFINE_CONC_CPU}"
+  echo "REFINE_TOTAL_CPU,${REFINE_TOTAL_CPU}"
+  echo "REFINE_runService_REF_CPU,${REFINE_TOTAL_REF_CPU}"
 
+  echo "REFINE_MUTATOR_WALL,${REFINE_MUTATOR_WALL}"
+  echo "REFINE_CONC_WALL,${REFINE_CONC_WALL}"
+  echo "REFINE_TOTAL_WALL,${REFINE_TOTAL_WALL}"
+
+
+
+
+#those are clock time
+  echo ""
+
+  REFINE_CPU=$(echo "${REFINE_MUTATOR_CPU} + ${REFINE_runService_REF_CPU}" | bc -l) 
+  
+
+  echo "CACHE_MISSES,${CACHE_MISSES}"
+  echo "CM_CPU_TIME,${CM_CPU_TIME}" #sum of not idle clock ticks from all cpus  
+  echo "REFINE_CPU_TIME,${REFINE_CPU}" #sum of not idle clock ticks from all cpus  
   echo "TIME_TO_SCAN_H2,${TIME_SCAN_H2}"
   echo "BYTES_MOVED_IN_H2,${BYTES_IN_H2}"
 
@@ -173,6 +203,9 @@ OTHER=$(echo "${TOTAL_TIME} - ${STW} - ${SERDES}" | bc -l)
   echo "SER_SAMPLES,${SER_SAMPLES}"
   echo "DESER_SAMPLES,${DESER_SAMPLES}"
   echo "APP_THREAD_SAMPLES,${APP_THREAD_SAMPLES}"
+  echo "ALL_SAMPLES,${ALL_SAMPLES}"
+  echo "SERDES_WITH_NET,${SERDES_WITH_NET}"
+  echo "SERDES_WITH_ALL,${SERDES_WITH_ALL}"
 } >> "${RESULT_DIR}"/serdes.csv
 
 # Read the Utilization from system.csv file

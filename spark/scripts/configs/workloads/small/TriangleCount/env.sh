@@ -1,5 +1,8 @@
 # for preparation 
-numV=942240		#> 2GB
+# numV=942240		#> 2GB
+# numV=110000
+numV=110000
+
 
 NUM_OF_PARTITIONS=256
 mu=4.0

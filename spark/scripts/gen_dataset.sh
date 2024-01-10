@@ -56,17 +56,22 @@ stop_spark() {
 
 CUSTOM_BENCHMARK=false
 
-setup_cgroup
+for benchmark in "${BENCHMARKS[@]}"
+do
+  setup_cgroup
 
-cp ./configs/native/spark-defaults.conf "${SPARK_DIR}"/conf
+  cp ./configs/native/spark-defaults.conf "${SPARK_DIR}"/conf
 
-./update_conf.sh -b ${CUSTOM_BENCHMARK}
+  ./update_conf.sh -b ${CUSTOM_BENCHMARK}
 
-start_spark
+  start_spark
 
-# Run benchmark and save output to tmp_out.txt
-run_cgexec "${SPARK_BENCH_DIR}"/"${BENCHMARKS}"/bin/gen_data.sh >> "${BENCH_LOG}" 2>&1
+  # Run benchmark and save output to tmp_out.txt
+  run_cgexec "${SPARK_BENCH_DIR}"/"${benchmark}"/bin/gen_data.sh >> "${BENCH_LOG}" 2>&1
 
-stop_spark
+  stop_spark
 
-delete_cgroup
+  
+  delete_cgroup
+done
+

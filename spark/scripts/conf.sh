@@ -17,22 +17,29 @@
 DATA_SIZE=small
 DATA_HDFS="file:///spare/mariach/datasets/SparkBench"
 
-
-
-
-# S_LEVEL=( "MEMORY_ONLY" )  # MEMORY_AND_DISK, MEMORY_ONLY
-# # cgset accepts K,M,G and eiB, MiB, GiB units for memory limit
-# MEM_BUDGET=8G # dram size = h1 size + page cache for h2
-# H1_SIZE=(4) # vanilla h1 = 90% of dram 
-
-S_LEVEL=( "MEMORY_AND_DISK" ) 
+#AUTO-RUNS
+S_LEVEL=("MEMORY_AND_DISK")
 MEM_BUDGET=8G
-H1_SIZE=(7)
+H1_SIZE=(6)
 
-# big dram (whatev -changed later)
-# h1 size for tera = just enough in odrer not to trigger full gc
-# dram = h1 size (for tera) + 4gb page cache
-# h1 size for vanilla = 90% of dram  (vanilla doesnt use dram)
+BENCHMARKS=("SVM")
+# "PageRank" "ConnectedComponent" "LinearRegression" "LogisticRegression" "ShortestPaths" "SVDPlusPlus" "SVM" "TriangleCount"
+
+
+#FIND HUMONGOUS : 5 min peripou
+# S_LEVEL=( "MEMORY_ONLY" )  
+# MEM_BUDGET=90G 
+# H1_SIZE=(80)  
+
+
+# big dram (will be changed later)
+# tera h1 : Find the peak alllocation size for humongou. round up to find tera h1 size ( just enough in odrer not to trigger full gc)
+# vanilla h1 : Find minimum h1 vanilla can run (not bellow h1 tera, bcs page cache for tera would be too small)
+# dram = vanilla h1 should be 70% - 80% of dram
+
+#MEM_BUDGET = DRAM = h1 size + page cache 
+#MEM_BUDGET accepts K,M,G
+#S_LEVEL = MEMORY_AND_DISK, MEMORY_ONLY
 
 # JAVA Home
 MY_JAVA_HOME="/home1/public/mariach/TeraHeap/teraheap/jdk17/build/base-linux/jdk"
@@ -93,10 +100,7 @@ H1_H2_SIZE=( 1200 ) #dont
 
 # Spark memory fraction: 'spark.memory.storagefraction'
 MEM_FRACTION=( 0.5 ) 
-# Running benchmarks
-BENCHMARKS=("PageRank")
-# "LogisticRegression" "ShortestPaths" "SQL" "SVDPlusPlus" "SVM" "TriangleCount" )
-# "PageRank" "ConnectedComponent" "LogisticRegression" "PageRank" "ShortestPaths" "SQL" "SVDPlusPlus" "SVM" "TriangleCount")
+
 # Number of executors
 NUM_EXECUTORS=( 1 )
 # Total Configurations

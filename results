@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+# APP_DIR=$(find ./bench_out -type d -name 'out*')
+APP_DIR=$(find ./final2 -type d -name 'SVM_Vanilla*')
+DIRS=($APP_DIR)
+
+rm -rf ./final/*_end_result.csv
+rm -rf out.csv
+
+i=0
+for benchmark in "${DIRS[@]}"
+do
+    BENCH_PATH=$(find ${benchmark} -type d -name 'conf0')
+
+    MEM=$(grep "MEM_BUDGET" ${BENCH_PATH}/conf.sh | grep -v "#")
+    H1=$(grep "H1_SIZE" ${BENCH_PATH}/conf.sh  | grep -v "#")
+    S_LEVEL=$(grep "S_LEVEL" ${BENCH_PATH}/conf.sh  | grep -v "#")
+    
+    # echo "${S_LEVEL};${MEM};${H1},,," >> ./final/${i}_end_result.csv
+    cat ${BENCH_PATH}/result.csv >> ./final/${i}_end_result.csv
+
+    ((i++))
+done
+
+paste -d',' $(find "./final" -type f -name "*_end_result.csv") | sed 's/,/ /g' | sed 's/\./,/g' >> out.csv

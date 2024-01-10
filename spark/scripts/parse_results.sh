@@ -103,7 +103,7 @@ REFINE_CONC_WALL=$(grep "Concurrent refinement:" ${RESULT_DIR}/gc.log | grep -oP
 REFINE_TOTAL_WALL=$(grep "Total refinement:" ${RESULT_DIR}/gc.log | grep -oP '(\d+\.\d+)ms' | awk '{ sum += $1 } END { print sum }')
 
 
-CACHE_MISSES=$(grep "Cache" ${RESULT_DIR}/gc.log | grep -oP '(\d+)$' | awk '{ sum += $1 } END { print sum }')
+CACHE_MISSES=$(grep "cache-misses" ${RESULT_DIR}/perf | awk '{print $1}' | sed 's/,//g' )
 
 # Caclulate the overheads in TeraHeap card table traversal, marking and adjust phases
 if [ $TH ]
@@ -142,42 +142,42 @@ do
 done
 
 OTHER=$(echo "${TOTAL_TIME} - ${STW} - ${SERDES_WITH_ALL}" | bc -l) 
-CM_WALL_NO_PAUSES=$(echo "${CM_WALL_TIME} - ${CM_GC_PAUSES} - ${CM_STW}" | bc -l) 
+CM_WALL_NO_PAUSES=$(echo "${CM_T} - ${CM_GC_PAUSES} - ${CM_STW}" | bc -l) 
 
 
 
 {
-  echo "COMPONENT,TIME(sec), COUNT"               
-  echo "TOTAL_TIME,${TOTAL_TIME}"
+  echo "COMPONENT,TIME(sec),COUNT,"               
+  echo "TOTAL_TIME,${TOTAL_TIME},,"
 
-  echo "OTHER,${OTHER}"
+  echo "OTHER,${OTHER},,"
 
   for ((i=0; i<NUM_EXECUTORS; i++))
   do
-    echo "SERDES,${SERDES_WITH_ALL[$i]}"
+    echo "SERDES,${SERDES_WITH_ALL[$i]},,"
   done
 
-  echo "YOUNG_GC,${YOUNG_GC_T},${YOUNG_GC_C}"
-  echo "MIXED_GC,${MIX_GC_T},${MIX_GC_C}"
-  echo "FULL_GC,${FULL_GC_T},${FULL_GC_C}"
+  echo "YOUNG_GC,${YOUNG_GC_T},${YOUNG_GC_C},"
+  echo "MIXED_GC,${MIX_GC_T},${MIX_GC_C},"
+  echo "FULL_GC,${FULL_GC_T},${FULL_GC_C},"
 
   echo ""
 
-  echo "CM_WALL_TIME,${CM_T},${CM_C}"
-  echo "CM_GC_PAUSES,${CM_GC_PAUSES}"
-  echo "CM_STW,${CM_STW}"
-  echo "CM_WALL_NO_PAUSES,${CM_WALL_NO_PAUSES}"
+  echo "CM_WALL_TIME,${CM_T},${CM_C},"
+  echo "CM_GC_PAUSES,${CM_GC_PAUSES},,"
+  echo "CM_STW,${CM_STW},,"
+  echo "CM_WALL_NO_PAUSES,${CM_WALL_NO_PAUSES},,"
 
 
   echo ""
-  echo "REFINE_MUTATOR_CPU,${REFINE_MUTATOR_CPU}"
-  echo "REFINE_CONC_CPU,${REFINE_CONC_CPU}"
-  echo "REFINE_TOTAL_CPU,${REFINE_TOTAL_CPU}"
-  echo "REFINE_runService_REF_CPU,${REFINE_TOTAL_REF_CPU}"
+  echo "REFINE_MUTATOR_CPU,${REFINE_MUTATOR_CPU},,"
+  echo "REFINE_CONC_CPU,${REFINE_CONC_CPU},,"
+  echo "REFINE_TOTAL_CPU,${REFINE_TOTAL_CPU},,"
+  echo "REFINE_runService_REF_CPU,${REFINE_TOTAL_REF_CPU},,"
 
-  echo "REFINE_MUTATOR_WALL,${REFINE_MUTATOR_WALL}"
-  echo "REFINE_CONC_WALL,${REFINE_CONC_WALL}"
-  echo "REFINE_TOTAL_WALL,${REFINE_TOTAL_WALL}"
+  echo "REFINE_MUTATOR_WALL,${REFINE_MUTATOR_WALL},,"
+  echo "REFINE_CONC_WALL,${REFINE_CONC_WALL},,"
+  echo "REFINE_TOTAL_WALL,${REFINE_TOTAL_WALL},,"
 
 
 
@@ -185,14 +185,14 @@ CM_WALL_NO_PAUSES=$(echo "${CM_WALL_TIME} - ${CM_GC_PAUSES} - ${CM_STW}" | bc -l
 #those are clock time
   echo ""
 
-  REFINE_CPU=$(echo "${REFINE_MUTATOR_CPU} + ${REFINE_runService_REF_CPU}" | bc -l) 
+  REFINE_CPU=$(echo "${REFINE_MUTATOR_CPU} + ${REFINE_TOTAL_REF_CPU}" | bc -l) 
   
 
-  echo "CACHE_MISSES,${CACHE_MISSES}"
-  echo "CM_CPU_TIME,${CM_CPU_TIME}" #sum of not idle clock ticks from all cpus  
-  echo "REFINE_CPU_TIME,${REFINE_CPU}" #sum of not idle clock ticks from all cpus  
-  echo "TIME_TO_SCAN_H2,${TIME_SCAN_H2}"
-  echo "BYTES_MOVED_IN_H2,${BYTES_IN_H2}"
+  echo "CACHE_MISSES,${CACHE_MISSES},,"
+  echo "CM_CPU_TIME,${CM_CPU_TIME},," #sum of not idle clock ticks from all cpus  
+  echo "REFINE_CPU_TIME,${REFINE_CPU},," #sum of not idle clock ticks from all cpus  
+  echo "TIME_TO_SCAN_H2,${TIME_SCAN_H2},,"
+  echo "BYTES_MOVED_IN_H2,${BYTES_IN_H2},,"
 
 } >> "${RESULT_DIR}"/result.csv
 
@@ -221,8 +221,8 @@ IOW_TIME=$( echo "${TOTAL_TIME} * ${IO_UTIL_PER} / 100" | bc -l )
 {
   echo
   echo
-  echo "CPU_COMPONENT,TIME(sec)"
-  echo "USR_TIME,${USR_TIME}"
-  echo "SYS_TIME,${SYS_TIME}"
-  echo "IOW_TIME,${IOW_TIME}"
+  echo "CPU_COMPONENT,TIME(sec),,"
+  echo "USR_TIME,${USR_TIME},,"
+  echo "SYS_TIME,${SYS_TIME},,"
+  echo "IOW_TIME,${IOW_TIME},,"
 } >> "${RESULT_DIR}"/result.csv

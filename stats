@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+
+APP_DIR=$(ls ./spark/spark-3.3.0/work/)
+DIRS=($APP_DIR)
+# DIRS=("app-20240108155838-0000")
+
+for benchmark in "${DIRS[@]}"
+do
+    echo ""
+
+    BENCH_PATH="./spark/spark-3.3.0/work/${benchmark}/0"
+
+    NAME=$(ls ${BENCH_PATH} | grep "jar")
+
+    echo "${NAME}"
+
+    total=$(grep "garbage-first heap   total" ${BENCH_PATH}/gc.log | sed 's/\[.*\]//' | awk '{print $5}' | sed 's/K,//g' | sort -n | tail -n 1 | awk '{print $1/1024 " MB," $1/1024/1024 " GB"}')
+    echo "Heap total SIZE peak : ${total}"
+
+    usage=$(grep "garbage-first heap   total" ${BENCH_PATH}/gc.log | sed 's/\[.*\]//' | awk '{print $7}' | sed 's/K//g' | sort -n | tail -n 1 | awk '{print $1/1024 " MB," $1/1024/1024 " GB"}')
+    echo "Heap USAGE peak : ${usage}"
+
+
+    A=$(grep "stored as values in memory" ${BENCH_PATH}/stdout | grep "KiB," | awk '{ sum += $14 } END {if (sum == 0) print 0; else print sum/1024/1024 }')
+    B=$(grep "stored as values in memory" ${BENCH_PATH}/stdout | grep "MiB," | awk '{ sum += $14 } END {if (sum == 0) print 0; else print sum/1024 }')
+    C=$(grep "stored as values in memory" ${BENCH_PATH}/stdout | grep "GiB," | awk '{ sum += $14 } END {if (sum == 0) print 0; else print sum }')
+    RET=$(echo "${A} + ${B} + ${C}" | bc -l)
+    echo "Total Cashed data: ${RET} GB"
+
+
+    disk=$(grep "disk" ${BENCH_PATH}/stdout | wc -l)
+    echo "Disk? (should be zero): ${disk}"
+
+    humong=$(grep "Humongous regions" ${BENCH_PATH}/gc.log | grep -oE '\b[0-9]+->[0-9]+\b' | sed 's/->/ /g' | awk '{print $1}' | sort -n | tail -n 1 | awk '{print $1*32 " MB," $1*32/1024 " GB"}')
+    echo "Humongous peak : ${humong}"
+
+   echo "${total} ${usage} ${RET} ${humong}" | sed 's/\./,/g'
+
+   echo ""
+
+done
+

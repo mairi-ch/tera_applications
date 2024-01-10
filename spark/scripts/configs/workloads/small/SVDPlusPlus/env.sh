@@ -1,6 +1,9 @@
 # for preparation 
 
-numV=908800	    #  2GB
+# numV=267987 # 504 MB ~O.5GB
+# numV=111650 # 192 MB
+numV=111000 # 192 MB
+
 NUM_OF_PARTITIONS=256
 mu=4.0
 sigma=1.3

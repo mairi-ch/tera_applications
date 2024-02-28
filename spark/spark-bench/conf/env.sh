@@ -2,10 +2,10 @@
 # Global settings - Configurations
 
 # Spark Master
-master="sith1-fast"
+master="sith3-fast"
 
 # A list of machines where the spark cluster is running
-MC_LIST="sith1-fast"
+MC_LIST="sith3-fast"
 
 # Use these inputs for fileio
 DATA_HDFS="file:///spare/mariach/datasets/SparkBench"
@@ -31,7 +31,7 @@ SPARK_EXECUTOR_INSTANCES=1
 SPARK_EXECUTOR_CORES=8
 
 # Storage levels, see :
-STORAGE_LEVEL=MEMORY_AND_DISK
+STORAGE_LEVEL=MEMORY_ONLY
 
 # For data generation
 NUM_OF_PARTITIONS=256

@@ -1,8 +1,8 @@
 # for preparation 
-# numV=942240		#> 2GB
-# numV=110000
-numV=110000
 
+numV=110000 #191 MB
+# numV=316600 #600 MB
+# numV=540330 #1GB
 
 NUM_OF_PARTITIONS=256
 mu=4.0
